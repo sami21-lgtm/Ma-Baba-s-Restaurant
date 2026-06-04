@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vee's Restaurant | Modern Dining</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- FontAwesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <!-- Header / Navbar -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Vee's Restaurant</div>
+            <ul class="nav-links">
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Signature Menu</a></li>
+                <li><a href="#reservation">Reservation</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <a href="#reservation" class="btn-reserve">Reserve Table</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to Vee's Restaurant</h1>
+            <p>Exquisite flavors, warm hospitality — the heart of culinary excellence. Experience authentic local & international cuisine curated by our founder.</p>
+            <div class="hero-btns">
+                <a href="#menu" class="btn-primary">Explore Menu <i class="fas fa-arrow-right"></i></a>
+                <a href="#reservation" class="btn-secondary">Book a Table</a>
+            </div>
+            <div class="hero-meta">
+                <span><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</span>
+                <span><i class="fas fa-phone"></i> +8801998453990</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="about-section">
+        <div class="about-container">
+            <div class="about-text">
+                <h2>Our Story & History</h2>
+                <p>Every masterpiece has a visionary behind it. Vee's Restaurant was conceptualized and founded to bring world-class dining, premium ambiance, and unforgettable culinary art under one roof. Our secret recipes and modern innovations surprise and delight food enthusiasts every single day.</p>
+                <div class="owner-badge">
+                    <i class="fas fa-crown"></i>
+                    <div>
+                        <h4>Md. Emtiaz Hossain Sami</h4>
+                        <p>Founder & Owner</p>
+                    </div>
+                </div>
+            </div>
+            <div class="about-img">
+                <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&w=600&q=80" alt="Restaurant Interior">
+            </div>
+        </div>
+    </section>
+
+    <!-- Menu Section -->
+    <section id="menu" class="menu-section">
+        <div class="section-title">
+            <h2>Our Signature Menu</h2>
+            <p>Explore culinary art crafted with heritage and passion.</p>
+        </div>
+        
+        <div class="menu-tabs">
+            <button class="tab-btn active" data-target="all">All</button>
+            <button class="tab-btn" data-target="continental">Continental</button>
+            <button class="tab-btn" data-target="drinks">Drinks</button>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card" data-category="continental">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=400&q=80" alt="Ribeye Steak">
+                <div class="card-info">
+                    <h3>Ribeye Steak</h3>
+                    <p>Tender grilled steak with garlic butter sauce and mashed potatoes.</p>
+                    <span class="price">Tk 1,250</span>
+                </div>
+            </div>
+            <div class="menu-card" data-category="drinks">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=400&q=80" alt="Cocktail">
+                <div class="card-info">
+                    <h3>Signature Mojito</h3>
+                    <p>Fresh mint, lime, and top-tier soda balance.</p>
+                    <span class="price">Tk 350</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Reservation Section -->
+    <section id="reservation" class="reservation-section">
+        <div class="glass-form-container">
+            <h2>Reserve Your Table</h2>
+            <p>Book your perfect spot for an exceptional dining experience.</p>
+            
+            <form id="resForm">
+                <div class="form-group row">
+                    <input type="text" id="name" placeholder="Your Name" required>
+                    <input type="email" id="email" placeholder="Your Email" required>
+                </div>
+                <div class="form-group row">
+                    <input type="date" id="date" required>
+                    <input type="time" id="time" required>
+                </div>
+                <div class="form-group">
+                    <select id="guests" required>
+                        <option value="" disabled selected>Number of Guests</option>
+                        <option value="1">1 Person</option>
+                        <option value="2">2 People</option>
+                        <option value="4">4 People</option>
+                        <option value="6">6+ People</option>
+                    </select>
+                </div>
+                <div class="seating-preference">
+                    <p>Seating Preference:</p>
+                    <div class="seat-options">
+                        <label class="seat-box">
+                            <input type="radio" name="seating" value="Indoor" checked>
+                            <span class="custom-box"><i class="fas fa-chair"></i> Indoor Dining</span>
+                        </label>
+                        <label class="seat-box">
+                            <input type="radio" name="seating" value="Terrace">
+                            <span class="custom-box"><i class="fas fa-cloud-sun"></i> Outdoor Terrace</span>
+                        </label>
+                        <label class="seat-box">
+                            <input type="radio" name="seating" value="VIP">
+                            <span class="custom-box"><i class="fas fa-crown"></i> Private VIP Booth</span>
+                        </label>
+                    </div>
+                </div>
+                <button type="submit" class="btn-submit">Confirm Booking</button>
+            </form>
+            <div id="formFeedback" class="form-feedback hidden"></div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact-section">
+        <div class="contact-container">
+            <h2>Contact & Support</h2>
+            <p>Have questions or special event requests? Reach out to us directly.</p>
+            <div class="contact-cards">
+                <div class="contact-card">
+                    <i class="fas fa-phone-alt"></i>
+                    <h3>Call / WhatsApp</h3>
+                    <p><a href="tel:+8801998453990" class="contact-link">+880 1998-453990</a></p>
+                </div>
+                <div class="contact-card">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Email Us</h3>
+                    <p>info@veesrestaurant.com</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Vee's Restaurant. All Rights Reserved.</p>
+        <p class="credits">Proprietor: <strong>Md. Emtiaz Hossain Sami</strong></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
