@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>Vee's Express & Sweets | Premium Delivery</title>
+    <title>Vee's Express & Sweets | Premium Foodpanda Style</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
@@ -60,34 +60,20 @@
                 <div class="category-tabs-container">
                     <div class="menu-tabs">
                         <button class="tab-btn active" data-target="all">All Items</button>
-                        <button class="tab-btn" data-target="continental">Continental</button>
+                        <button class="tab-btn" data-target="continental">Continental Feast</button>
                         <button class="tab-btn" data-target="local">Local & Mains</button>
-                        <button class="tab-btn" data-target="sweets">Premium Mishti</button>
+                        <button class="tab-btn" data-target="sweets">Premium Mishti (Sweets)</button>
                         <button class="tab-btn" data-target="drinks">Drinks</button>
                     </div>
                 </div>
 
                 <div class="menu-grid">
                     
-                    <div class="menu-card" data-category="continental" data-id="ribeye" data-name="Premium Ribeye Steak">
-                        <div class="card-img-container"><img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=600&q=80" alt="Steak"></div>
-                        <div class="card-info">
-                            <h3>Premium Ribeye Steak</h3>
-                            <p>Tender grilled ribeye steak served with garlic butter glaze.</p>
-                            <div class="portion-group">
-                                <label class="portion-label"><input type="radio" name="p-ribeye" value="Half" data-price="400" checked><span class="portion-box">Half (400)</span></label>
-                                <label class="portion-label"><input type="radio" name="p-ribeye" value="Medium" data-price="600"><span class="portion-box">Med (600)</span></label>
-                                <label class="portion-label"><input type="radio" name="p-ribeye" value="Full" data-price="800"><span class="portion-box">Full (800)</span></label>
-                            </div>
-                            <button type="button" class="btn-add-to-cart">Add to Cart</button>
-                        </div>
-                    </div>
-
                     <div class="menu-card" data-category="local" data-id="kacchi" data-name="Mutton Kacchi Biryani">
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80" alt="Kacchi"></div>
                         <div class="card-info">
                             <h3>Mutton Kacchi Biryani</h3>
-                            <p>Basmati rice cooked in slow steam with tender mutton chunks.</p>
+                            <p>Basmati rice cooked in slow steam with tender mutton chunks and aromatic saffron.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-kacchi" value="Half" data-price="180" checked><span class="portion-box">Half (180)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-kacchi" value="Medium" data-price="260"><span class="portion-box">Med (260)</span></label>
@@ -97,38 +83,25 @@
                         </div>
                     </div>
 
-                    <div class="menu-card" data-category="local" data-id="butter_chicken" data-name="Mughlai Butter Chicken">
-                        <div class="card-img-container"><img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80" alt="Butter Chicken"></div>
+                    <div class="menu-card" data-category="continental" data-id="ribeye" data-name="Premium Ribeye Steak">
+                        <div class="card-img-container"><img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=600&q=80" alt="Steak"></div>
                         <div class="card-info">
-                            <h3>Mughlai Butter Chicken</h3>
-                            <p>Boneless tandoori chicken simmered in rich, velvety tomato gravy.</p>
+                            <h3>Premium Ribeye Steak</h3>
+                            <p>Tender grilled ribeye steak served with garlic butter glaze and smooth potato mash.</p>
                             <div class="portion-group">
-                                <label class="portion-label"><input type="radio" name="p-butter" value="Half" data-price="200" checked><span class="portion-box">Half (200)</span></label>
-                                <label class="portion-label"><input type="radio" name="p-butter" value="Medium" data-price="300"><span class="portion-box">Med (300)</span></label>
-                                <label class="portion-label"><input type="radio" name="p-butter" value="Full" data-price="400"><span class="portion-box">Full (400)</span></label>
+                                <label class="portion-label"><input type="radio" name="p-ribeye" value="Half" data-price="400" checked><span class="portion-box">Half (400)</span></label>
+                                <label class="portion-label"><input type="radio" name="p-ribeye" value="Medium" data-price="600"><span class="portion-box">Med (600)</span></label>
+                                <label class="portion-label"><input type="radio" name="p-ribeye" value="Full" data-price="800"><span class="portion-box">Full (800)</span></label>
                             </div>
                             <button type="button" class="btn-add-to-cart">Add to Cart</button>
                         </div>
                     </div>
 
-                    <div class="menu-card" data-category="continental" data-id="pizza" data-name="Four Cheese Pizza">
-                        <div class="card-img-container"><img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Pizza"></div>
-                        <div class="card-info">
-                            <h3>Four Cheese Pizza</h3>
-                            <p>Artisanal crust loaded with Mozzarella, Parmesan, and Cheddar.</p>
-                            <div class="portion-group">
-                                <label class="portion-label"><input type="radio" name="p-pizza" value="Medium" data-price="450" checked><span class="portion-box">Med (450)</span></label>
-                                <label class="portion-label"><input type="radio" name="p-pizza" value="Full" data-price="650"><span class="portion-box">Full (650)</span></label>
-                            </div>
-                            <button type="button" class="btn-add-to-cart">Add to Cart</button>
-                        </div>
-                    </div>
-
-                    <div class="menu-card" data-category="sweets" data-id="kachagolla" data-name="Natore Kachagolla">
+                    <div class="menu-card" data-category="sweets" data-id="kachagolla" data-name="Natore Original Kachagolla">
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&w=600&q=80" alt="Kachagolla"></div>
                         <div class="card-info">
                             <h3>Natore Original Kachagolla</h3>
-                            <p>Authentic, crumbly soft sweet made from pure milk chhana.</p>
+                            <p>Authentic, crumbly soft sweet made from pure milk chhana with minimal sugar.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-kachagolla" value="Half" data-price="120" checked><span class="portion-box">Half (120)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-kachagolla" value="Medium" data-price="220"><span class="portion-box">Med (220)</span></label>
@@ -142,7 +115,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&w=600&q=80" alt="Sandesh"></div>
                         <div class="card-info">
                             <h3>Premium Chhana Sandesh</h3>
-                            <p>Silky traditional sandesh crafted with fresh cottage cheese.</p>
+                            <p>Silky traditional sandesh crafted with fresh cottage cheese and pure ghee essence.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-sandasondesh" value="Half" data-price="130" checked><span class="portion-box">Half (130)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-sandasondesh" value="Medium" data-price="240"><span class="portion-box">Med (240)</span></label>
@@ -156,7 +129,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&w=600&q=80" alt="Rasmalai"></div>
                         <div class="card-info">
                             <h3>Shahi Kesari Rasmalai</h3>
-                            <p>Mini chhana balls dipped in thick saffron flavored milk rabri.</p>
+                            <p>Mini chhana balls dipped in thick, slow-boiled saffron flavored sweet milk rabri.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-rasmalai" value="Half" data-price="150" checked><span class="portion-box">Half (150)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-rasmalai" value="Medium" data-price="280"><span class="portion-box">Med (280)</span></label>
@@ -170,7 +143,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=600&q=80" alt="Rasgulla"></div>
                         <div class="card-info">
                             <h3>Spongy White Rasgulla</h3>
-                            <p>Soft, juicy, melted syrup-filled traditional white spongy sweet.</p>
+                            <p>Soft, juicy, melted syrup-filled traditional white spongy delight sweets.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-rasgulla" value="Half" data-price="90" checked><span class="portion-box">Half (90)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-rasgulla" value="Medium" data-price="170"><span class="portion-box">Med (170)</span></label>
@@ -184,7 +157,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1605698801213-94c6fbc4b84b?auto=format&fit=crop&w=600&q=80" alt="Kalojam"></div>
                         <div class="card-info">
                             <h3>Traditional Kalo Jam</h3>
-                            <p>Hard exterior deep fried dark brown sweet with a sweet core.</p>
+                            <p>Hard exterior deep fried dark brown sweet with a granular sweet core center.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-kalojam" value="Half" data-price="100" checked><span class="portion-box">Half (100)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-kalojam" value="Medium" data-price="190"><span class="portion-box">Med (190)</span></label>
@@ -198,7 +171,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1541832676-9b763b0239ab?auto=format&fit=crop&w=600&q=80" alt="Gulab Jamun"></div>
                         <div class="card-info">
                             <h3>Classic Gulab Jamun</h3>
-                            <p>Golden fried khoya balls dipped in aromatic cardamom syrup.</p>
+                            <p>Golden fried khoya balls dipped gently in aromatic sugar syrup spiced with cardamom.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-gulab" value="Half" data-price="100" checked><span class="portion-box">Half (100)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-gulab" value="Medium" data-price="180"><span class="portion-box">Med (180)</span></label>
@@ -212,7 +185,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1505253685812-471a7d1d3d1a?auto=format&fit=crop&w=600&q=80" alt="Chamcham"></div>
                         <div class="card-info">
                             <h3>Porabari Mawa Chamcham</h3>
-                            <p>Oval shaped dense sweet coated with roasted mawa flakes.</p>
+                            <p>Oval shaped dense sweet coated with roasted mawa flakes for rich texture.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-chamcham" value="Half" data-price="120" checked><span class="portion-box">Half (120)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-chamcham" value="Medium" data-price="220"><span class="portion-box">Med (220)</span></label>
@@ -226,7 +199,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1605197585662-817bf513253b?auto=format&fit=crop&w=600&q=80" alt="Laddu"></div>
                         <div class="card-info">
                             <h3>Shahi Motichoor Laddu</h3>
-                            <p>Tiny gram flour boondi deep fried in pure ghee into sweet balls.</p>
+                            <p>Tiny gram flour boondi deep fried in pure ghee, compressed into sweet balls.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-laddu" value="Half" data-price="110" checked><span class="portion-box">Half (110)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-laddu" value="Medium" data-price="200"><span class="portion-box">Med (200)</span></label>
@@ -240,7 +213,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1621510456681-23a23cfb5f57?auto=format&fit=crop&w=600&q=80" alt="Kheer Kadam"></div>
                         <div class="card-info">
                             <h3>Premium Kheer Kadam</h3>
-                            <p>Dual layered sweet with rasgulla inside and dry khoya outside.</p>
+                            <p>Dual layered masterpiece with a small juicy rasgulla inside and dry khoya outside.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-kheer" value="Half" data-price="130" checked><span class="portion-box">Half (130)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-kheer" value="Medium" data-price="250"><span class="portion-box">Med (250)</span></label>
@@ -254,7 +227,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1571115177098-24ec42093de9?auto=format&fit=crop&w=600&q=80" alt="Mishti Doi"></div>
                         <div class="card-info">
                             <h3>Authentic Bograr Doi</h3>
-                            <p>Creamy, thick caramelized sweet yogurt fermented naturally.</p>
+                            <p>Creamy, thick caramelized sweet yogurt fermented naturally in traditional clay pots.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-doi" value="Half" data-price="80" checked><span class="portion-box">Half (80)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-doi" value="Medium" data-price="150"><span class="portion-box">Med (150)</span></label>
@@ -268,7 +241,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1542826438-bd32f43d626f?auto=format&fit=crop&w=600&q=80" alt="Pesta Sandesh"></div>
                         <div class="card-info">
                             <h3>Shahi Pesta Sandesh</h3>
-                            <p>Delicate premium milk cake garnished with pistachio nuts.</p>
+                            <p>Delicate premium milk cake garnished extensively with crushed green pistachio nuts.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-pesta" value="Half" data-price="140" checked><span class="portion-box">Half (140)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-pesta" value="Medium" data-price="260"><span class="portion-box">Med (260)</span></label>
@@ -282,7 +255,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1593560708920-61dd98c46a4e?auto=format&fit=crop&w=600&q=80" alt="Rajbhog"></div>
                         <div class="card-info">
                             <h3>Royal Saffron Rajbhog</h3>
-                            <p>King-sized soft spongy rasgulla stuffed with dry fruit mix.</p>
+                            <p>King-sized soft spongy rasgulla stuffed inside with dry fruit mix and saffron threads.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-rajbhog" value="Half" data-price="120" checked><span class="portion-box">Half (120)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-rajbhog" value="Medium" data-price="220"><span class="portion-box">Med (220)</span></label>
@@ -296,7 +269,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" alt="Malpua"></div>
                         <div class="card-info">
                             <h3>Saffron Syrup Malpua</h3>
-                            <p>Crispy edged yet extremely soft pancake soaked in syrup.</p>
+                            <p>Crispy edged yet extremely soft shallow fried pancake completely soaked in syrup.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-malpua" value="Half" data-price="100" checked><span class="portion-box">Half (100)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-malpua" value="Medium" data-price="180"><span class="portion-box">Med (180)</span></label>
@@ -310,7 +283,7 @@
                         <div class="card-img-container"><img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Amriti"></div>
                         <div class="card-info">
                             <h3>Ghee Fried Shahi Amriti</h3>
-                            <p>Artistic swirl shaped black gram batter crisped in pure ghee.</p>
+                            <p>Artistic swirl shaped black gram batter crisped in ghee and glazed inside sweet syrup.</p>
                             <div class="portion-group">
                                 <label class="portion-label"><input type="radio" name="p-amriti" value="Half" data-price="90" checked><span class="portion-box">Half (90)</span></label>
                                 <label class="portion-label"><input type="radio" name="p-amriti" value="Medium" data-price="170"><span class="portion-box">Med (170)</span></label>
@@ -319,33 +292,7 @@
                             <button type="button" class="btn-add-to-cart">Add to Cart</button>
                         </div>
                     </div>
-                    
-                    <div class="menu-card" data-category="drinks" data-id="mojito" data-name="Signature Mint Mojito">
-                        <div class="card-img-container"><img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="Mint Mojito"></div>
-                        <div class="card-info">
-                            <h3>Signature Mint Mojito</h3>
-                            <p>Refreshing combination of muddled mint, lime, and soda.</p>
-                            <div class="portion-group">
-                                <label class="portion-label"><input type="radio" name="p-mojito" value="Regular" data-price="120" checked><span class="portion-box">Glass (120)</span></label>
-                            </div>
-                            <button type="button" class="btn-add-to-cart">Add to Cart</button>
-                        </div>
-                    </div>
 
-                </div>
-            </section>
-            
-            <section id="reservation" class="reservation-section">
-                <div class="glass-form-container">
-                    <h2>Book A Table Inside Venue</h2>
-                    <form id="resForm">
-                        <div class="form-group row">
-                            <input type="text" id="name" placeholder="Name" required>
-                            <input type="date" id="date" required>
-                        </div>
-                        <button type="submit" class="btn-submit">Confirm Seating Reservation</button>
-                    </form>
-                    <div id="formFeedback" class="form-feedback hidden"></div>
                 </div>
             </section>
         </div>
