@@ -1,33 +1,35 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>Ma-Baba's Restaurant | Premium Dining</title>
     <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-
     <!-- Promo Bar -->
     <div class="promo-discount-bar">
         Enjoy 20% off on all authentic Bangladeshi dishes this weekend! Use code: DHAKA20
     </div>
-
     <!-- Header -->
     <header>
         <div class="logo">Ma-Bba'sRestaurant</div>
-        <nav>
-            <a href="#home">Home</a>
-            <a href="#about">About</a>
-            <a href="#menu">Menu</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
+        <!-- Mobile Menu Toggle Button -->
+        <button class="mobile-menu-toggle" onclick="toggleMobileNav()">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+        <nav id="navbar">
+            <a href="#home" onclick="toggleMobileNav()">Home</a>
+            <a href="#about" onclick="toggleMobileNav()">About</a>
+            <a href="#menu" onclick="toggleMobileNav()">Menu</a>
+            <a href="#gallery" onclick="toggleMobileNav()">Gallery</a>
+            <a href="#contact" onclick="toggleMobileNav()">Contact</a>
         </nav>
-        <button class="btn-reserve" onclick="openBooking()">Reserve Table</button>
+        <button class="btn-reserve header-reserve-btn" onclick="openBooking()">Reserve Table</button>
     </header>
-
     <!-- Hero Section -->
     <section id="home" class="hero-viewport" style="padding: 0;">
         <div class="hero-overlay-content">
@@ -39,14 +41,12 @@
             </div>
         </div>
     </section>
-
     <!-- About Section -->
     <section id="about" class="about-story-section">
         <div class="section-title-block">
             <h2>Our Story & Leadership</h2>
             <p>Where premium culinary vision meets authentic warmth and global flair.</p>
         </div>
-
         <div class="chefs-flex-row">
             <!-- Owner Info Card -->
             <div class="chef-profile-card owner-highlight">
@@ -62,7 +62,6 @@
                 <p class="chef-role-tag">Owner & Founder</p>
                 <p class="chef-biography">Visionary entrepreneur dedicated to bringing premium global dining experiences, rich heritage blends, and authentic traditional cuisines under one elite platform.</p>
             </div>
-
             <!-- Executive Chef Card -->
             <div class="chef-profile-card">
                 <div class="profile-image-wrapper normal-chef-border">
@@ -74,14 +73,12 @@
             </div>
         </div>
     </section>
-
     <!-- Menu Section -->
     <section id="menu">
         <div class="section-title-block">
             <h4 class="sub-heading-accent">Our Signature Menu</h4>
             <h2>From timeless classics to modern twists</h2>
         </div>
-
         <!-- Category Filters -->
         <div class="menu-filter-bar">
             <button class="filter-tab-btn active" onclick="filterMenu('all')">All Items</button>
@@ -91,12 +88,10 @@
             <button class="filter-tab-btn" onclick="filterMenu('drinks')">Drinks</button>
             <button class="filter-tab-btn" onclick="filterMenu('desserts')">Desserts & Cakes</button>
         </div>
-
         <div class="menu-products-container">
             
             <!-- [BREAKFAST] 1. Soft Ruti / Paratha -->
             <div class="product-item-card breakfast">
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="images (12).jpg" alt="Soft Ruti / Paratha">
                 <div class="product-card-body">
                     <h3>Soft Ruti / Paratha</h3>
@@ -121,11 +116,9 @@
                     </div>
                 </div>
             </div>
-
             <!-- [BREAKFAST] 2. Special Bhuna Daal -->
             <div class="product-item-card breakfast">
                 <span class="badge-popular">Morning Special</span>
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="images (13).jpg" alt="Special Bhuna Daal">
                 <div class="product-card-body">
                     <h3>Special Bhuna Daal</h3>
@@ -149,7 +142,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- [BREAKFAST] 3. Farm Fresh Egg -->
             <div class="product-item-card breakfast">
                 <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=400" alt="Egg">
@@ -176,11 +168,9 @@
                     </div>
                 </div>
             </div>
-
             <!-- [BREAKFAST/LUNCH] 4. Beef Bhuna Khichuri -->
             <div class="product-item-card breakfast lunch">
                 <span class="badge-popular badge-bestseller">Heavy Breakfast</span>
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="e338491b-063e-4228-ac0e-3ca9c73536a8.png" alt="Khichuri">
                 <div class="product-card-body">
                     <h3>Beef Bhuna Khichuri</h3>
@@ -205,11 +195,9 @@
                     </div>
                 </div>
             </div>
-
             <!-- [LUNCH] 5. Premium Mutton Kacchi -->
             <div class="product-item-card lunch">
                 <span class="badge-popular badge-bestseller"><i class="fa-solid fa-star"></i> Bestseller</span>
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="images (14).jpg" alt="Mutton Kacchi">
                 <div class="product-card-body">
                     <h3>Premium Mutton Kacchi</h3>
@@ -234,11 +222,9 @@
                     </div>
                 </div>
             </div>
-
             <!-- [LUNCH/DINNER] 6. Chittagong Kala Bhuna -->
             <div class="product-item-card lunch dinner">
                 <span class="badge-popular">Popular</span>
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="4a1cb3da-4300-4954-b526-8ac5f40146f1.png" alt="Kala Bhuna">
                 <div class="product-card-body">
                     <h3>Chittagong Kala Bhuna</h3>
@@ -263,7 +249,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- [LUNCH] 7. Old Dhaka Beef Tehari -->
             <div class="product-item-card lunch">
                 <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=400" alt="Beef Tehari">
@@ -290,11 +275,9 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DESSERTS] 8. Premium Golap Jam -->
             <div class="product-item-card desserts">
                 <span class="badge-popular badge-bestseller">Must Try</span>
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="0ddd6c12-16ec-45c4-b487-b80951e661d3.png" alt="Golap Jam">
                 <div class="product-card-body">
                     <h3>Premium Golap Jam</h3>
@@ -319,10 +302,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DESSERTS] 9. Traditional Kalo Jam -->
             <div class="product-item-card desserts">
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="5c9a67e3-cf74-4c1d-8284-d8286d70bffe.png" alt="Kalo Jam">
                 <div class="product-card-body">
                     <h3>Traditional Kalo Jam</h3>
@@ -347,10 +328,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DESSERTS] 10. Spongy Roshogolla -->
             <div class="product-item-card desserts">
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="32592ad6-fe80-41e8-a7a3-872e94c0bc1c.png" alt="Roshogolla">
                 <div class="product-card-body">
                     <h3>Spongy Roshogolla</h3>
@@ -375,10 +354,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DESSERTS] 11. Premium Sondesh -->
             <div class="product-item-card desserts">
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="74221d1f-efce-452f-8731-e368a05f2e5b.png" alt="Sondesh">
                 <div class="product-card-body">
                     <h3>Premium Sondesh</h3>
@@ -403,7 +380,6 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DESSERTS] 12. Dark Chocolate Cake -->
             <div class="product-item-card desserts">
                 <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=400" alt="Chocolate Cake">
@@ -430,10 +406,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DESSERTS] 13. Premium Sponge Cake -->
             <div class="product-item-card desserts">
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="0f144ebe-252c-474d-b4fd-5b2fb102b76b.png" alt="Sponge Cake">
                 <div class="product-card-body">
                     <h3>Premium Sponge Cake</h3>
@@ -458,10 +432,8 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DESSERTS] 14. Vanilla Bean Cake -->
             <div class="product-item-card desserts">
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="efbacffe-7036-4fd0-beb4-43eafe0c7e00.png" alt="Vanilla Cake">
                 <div class="product-card-body">
                     <h3>Vanilla Bean Cake</h3>
@@ -486,11 +458,9 @@
                     </div>
                 </div>
             </div>
-
             <!-- [DRINKS] 15. Traditional Borhani -->
             <div class="product-item-card drinks lunch dinner">
                 <span class="badge-popular">Digestive</span>
-                <!-- আপনার নিজের ছবি সেট করার জন্য -->
                 <img src="images (11).jpg" alt="Borhani">
                 <div class="product-card-body">
                     <h3>Traditional Borhani</h3>
@@ -515,17 +485,14 @@
                     </div>
                 </div>
             </div>
-
         </div>
     </section>
-
     <!-- Contact & Footer Section -->
     <section id="contact" style="padding: 0 8% 40px;">
         <div class="section-title-block" style="margin-bottom: 30px;">
             <h2 style="color: var(--brand-orange-accent); font-size: 28px;">Contact & Support</h2>
             <p style="color: var(--slate-muted); font-size: 14px; margin-top: 8px;">Have questions or special event requests? Reach out to us directly.</p>
         </div>
-
         <div class="contact-cards-container">
             <div class="contact-card">
                 <i class="fa-solid fa-phone"></i>
@@ -538,13 +505,11 @@
                 <p>info@veesrestaurant.com</p>
             </div>
         </div>
-
         <div class="footer-bottom-bar">
             <p>&copy; 2026 Vee's Restaurant. All Rights Reserved.</p>
             <p>Proprietor: <strong>Md. Emtiaz Hossain Sami</strong></p>
         </div>
     </section>
-
     <!-- Foodpanda Style Floating Cart Basket Bar -->
     <div id="floating-cart" class="floating-cart hidden" onclick="toggleCheckoutModal(true)">
         <div class="cart-left">
@@ -558,7 +523,6 @@
             <span id="cart-total-price">৳0</span>
         </div>
     </div>
-
     <!-- Active Checkout Flow Modal Drawer -->
     <div id="checkoutModal" class="system-modal-backdrop">
         <div class="modal-card-container">
@@ -576,9 +540,8 @@
                     <span id="summary-total-val" style="color: #d70f64; font-weight: 800;">৳0</span>
                 </div>
             </div>
-
             <!-- Shipping Contact Input Form -->
-            <form id="orderCheckoutForm" onsubmit="handleOrderSubmission(event)">
+            <form id="orderCheckoutForm" onsubmit="openOtpModal(event)">
                 <div class="input-form-field">
                     <label>Full Name *</label>
                     <input type="text" id="custName" required placeholder="Md. Emtiaz Hossain">
@@ -605,6 +568,31 @@
         </div>
     </div>
 
+    <!-- Premium & Stylish OTP Verification Modal -->
+    <div id="otpModal" class="system-modal-backdrop">
+        <div class="modal-card-container otp-card-container">
+            <span class="modal-dismiss-trigger" onclick="closeOtpModal()">&times;</span>
+            <div class="otp-header">
+                <div class="otp-icon-wrapper">
+                    <i class="fa-solid fa-shield-halved"></i>
+                </div>
+                <h2>Security Verification</h2>
+                <p>We have sent a 4-digit verification code to <br><strong id="otp-target-phone">017XXXXXXXX</strong></p>
+            </div>
+            
+            <div class="otp-input-group">
+                <input type="text" class="otp-box" maxlength="1" oninput="moveOtpFocus(this, 'opt2')" id="opt1">
+                <input type="text" class="otp-box" maxlength="1" oninput="moveOtpFocus(this, 'opt3')" id="opt2">
+                <input type="text" class="otp-box" maxlength="1" oninput="moveOtpFocus(this, 'opt4')" id="opt3">
+                <input type="text" class="otp-box" maxlength="1" oninput="moveOtpFocus(this, '')" id="opt4">
+            </div>
+
+            <p class="otp-timer-text">Resend code in <span id="otp-timer">00:59</span></p>
+
+            <button type="button" class="btn-otp-verify" onclick="verifyOtpAndSubmit()">Verify & Confirm Order</button>
+        </div>
+    </div>
+
     <!-- Booking Modal Backdrop -->
     <div id="bookingModal" class="system-modal-backdrop">
         <div class="modal-card-container">
@@ -616,10 +604,8 @@
             </div>
         </div>
     </div>
-
     <!-- Toast Notification Overlay -->
     <div id="toast-notification"></div>
-
     <script src="script.js"></script>
 </body>
 </html>
