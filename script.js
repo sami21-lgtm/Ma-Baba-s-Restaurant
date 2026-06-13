@@ -1,44 +1,52 @@
-function previewOwnerImage(input) {
+unction previewOwnerImage(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
-        
         reader.onload = function(e) {
-            // Render target image source dynamically instantly
             document.getElementById('owner-profile-img').src = e.target.result;
         };
-        
         reader.readAsDataURL(input.files[0]);
     }
 }
 
-// ================= SYSTEM PRICING SWITCHERS =================
-
-// Dynamic configuration for Plate-based items (Half / Full)
+// ================= PRICING SWITCHERS (TAKA ৳) =================
+// Plate-based items (Half / Full)
 function updatePlatePricing(selectElement, halfPrice, fullPrice) {
     const cardBody = selectElement.closest('.product-card-body');
     const priceDisplay = cardBody.querySelector('.dynamic-render-price');
     const selectedValue = selectElement.value;
     
     if (selectedValue === "half") {
-        priceDisplay.textContent = "₦" + halfPrice.toLocaleString();
+        priceDisplay.textContent = "৳" + halfPrice.toLocaleString();
     } else {
-        priceDisplay.textContent = "₦" + fullPrice.toLocaleString();
+        priceDisplay.textContent = "৳" + fullPrice.toLocaleString();
     }
 }
 
-// Dynamic configuration matrix for Sweet Weights
+// Sweet Weights
 function updateSweetPricing(selectElement, p250, p500, p1k) {
     const cardBody = selectElement.closest('.product-card-body');
     const priceDisplay = cardBody.querySelector('.dynamic-render-price');
     const weight = selectElement.value;
     
     if (weight === "250") {
-        priceDisplay.textContent = "₦" + p250.toLocaleString();
+        priceDisplay.textContent = "৳" + p250.toLocaleString();
     } else if (weight === "500") {
-        priceDisplay.textContent = "₦" + p500.toLocaleString();
+        priceDisplay.textContent = "৳" + p500.toLocaleString();
     } else if (weight === "1000") {
-        priceDisplay.textContent = "₦" + p1k.toLocaleString();
+        priceDisplay.textContent = "৳" + p1k.toLocaleString();
     }
+}
+
+// ================= ADD TO CART LOGIC =================
+function addToCart(itemName) {
+    const toast = document.getElementById("toast-notification");
+    toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> <strong>${itemName}</strong> added to cart!`;
+    toast.className = "show";
+    
+    // Hide toast after 3 seconds
+    setTimeout(function(){ 
+        toast.className = toast.className.replace("show", ""); 
+    }, 3000);
 }
 
 // ================= MENU CATEGORY FILTERS =================
@@ -62,7 +70,7 @@ function filterMenu(categoryName) {
     });
 }
 
-// ================= MODAL AND WIZARD CONTROLS =================
+// ================= MODAL WIZARD CONTROLS =================
 function openBooking() {
     document.getElementById('bookingModal').style.display = 'flex';
     clearWizardForm();
@@ -72,6 +80,7 @@ function closeBooking() {
     document.getElementById('bookingModal').style.display = 'none';
 }
 
+// Close modal when clicking outside
 window.onclick = function(event) {
     const modal = document.getElementById('bookingModal');
     if (event.target == modal) { modal.style.display = "none"; }
