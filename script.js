@@ -1,175 +1,109 @@
-document.addEventListener('DOMContentLoaded', () => {
-
-    // --- 1. Menu Tab Filtering ---
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const menuCards = document.querySelectorAll('.menu-card');
-
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active class from all buttons
-            tabBtns.forEach(b => b.classList.remove('active'));
-            // Add active class to clicked button
-            btn.classList.add('active');
-
-            const target = btn.getAttribute('data-target');
-
-            menuCards.forEach(card => {
-                if (target === 'all' || card.getAttribute('data-category') === target) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        });
-    });
-
-    // --- 2. Menu Card Price Calculation ---
-    menuCards.forEach(card => {
-        const minusBtn = card.querySelector('.qty-minus');
-        const plusBtn = card.querySelector('.qty-plus');
-        const qtyInput = card.querySelector('.qty-input');
-        const priceDisplay = card.querySelector('.total-price');
-        const portionRadios = card.querySelectorAll('input[type="radio"]');
-
-        function updateCardTotal() {
-            const selectedRadio = card.querySelector('input[type="radio"]:checked');
-            const basePrice = parseInt(selectedRadio.getAttribute('data-price'));
-            const quantity = parseInt(qtyInput.value);
-            const total = basePrice * quantity;
-            priceDisplay.textContent = `Tk ${total}`;
-        }
-
-        // Listen for portion change
-        portionRadios.forEach(radio => {
-            radio.addEventListener('change', updateCardTotal);
-        });
-
-        // Listen for quantity buttons
-        plusBtn.addEventListener('click', () => {
-            qtyInput.value = parseInt(qtyInput.value) + 1;
-            updateCardTotal();
-        });
-
-        minusBtn.addEventListener('click', () => {
-            if (parseInt(qtyInput.value) > 1) {
-                qtyInput.value = parseInt(qtyInput.value) - 1;
-                updateCardTotal();
-            }
-        });
-    });
-
-    // --- 3. Shopping Cart System ---
-    let basket = [];
-    const cartBtn = document.getElementById('cartBtn');
-    const cartBadge = document.getElementById('cartBadge');
-    const cartOverlay = document.getElementById('cartOverlay');
-    const cartSidebar = document.getElementById('cartSidebar');
-    const closeCartBtn = document.getElementById('closeCart');
-    const cartItemsContainer = document.getElementById('cartItemsContainer');
-    const cartTotalDisplay = document.getElementById('cartTotalDisplay');
-    const addButtons = document.querySelectorAll('.btn-add-basket');
-
-    // Open & Close Cart
-    function openCart() {
-        cartSidebar.classList.add('active');
-        cartOverlay.classList.add('active');
+function previewOwnerImage(input) {
+    if (input.files && input.files[0]) {
+        const reader = new FileReader();
+        
+        reader.onload = function(e) {
+            // Render target image source dynamically instantly
+            document.getElementById('owner-profile-img').src = e.target.result;
+        };
+        
+        reader.readAsDataURL(input.files[0]);
     }
-    function closeCart() {
-        cartSidebar.classList.remove('active');
-        cartOverlay.classList.remove('active');
+}
+
+// ================= SYSTEM PRICING SWITCHERS =================
+
+// Dynamic configuration for Plate-based items (Half / Full)
+function updatePlatePricing(selectElement, halfPrice, fullPrice) {
+    const cardBody = selectElement.closest('.product-card-body');
+    const priceDisplay = cardBody.querySelector('.dynamic-render-price');
+    const selectedValue = selectElement.value;
+    
+    if (selectedValue === "half") {
+        priceDisplay.textContent = "₦" + halfPrice.toLocaleString();
+    } else {
+        priceDisplay.textContent = "₦" + fullPrice.toLocaleString();
     }
+}
 
-    cartBtn.addEventListener('click', openCart);
-    closeCartBtn.addEventListener('click', closeCart);
-    cartOverlay.addEventListener('click', closeCart);
+// Dynamic configuration matrix for Sweet Weights
+function updateSweetPricing(selectElement, p250, p500, p1k) {
+    const cardBody = selectElement.closest('.product-card-body');
+    const priceDisplay = cardBody.querySelector('.dynamic-render-price');
+    const weight = selectElement.value;
+    
+    if (weight === "250") {
+        priceDisplay.textContent = "₦" + p250.toLocaleString();
+    } else if (weight === "500") {
+        priceDisplay.textContent = "₦" + p500.toLocaleString();
+    } else if (weight === "1000") {
+        priceDisplay.textContent = "₦" + p1k.toLocaleString();
+    }
+}
 
-    // Render Cart UI
-    function updateCartUI() {
-        cartItemsContainer.innerHTML = '';
-        let grandTotal = 0;
-        let totalItems = 0;
+// ================= MENU CATEGORY FILTERS =================
+function filterMenu(categoryName) {
+    const items = document.querySelectorAll('.product-item-card');
+    const tabs = document.querySelectorAll('.filter-tab-btn');
 
-        if (basket.length === 0) {
-            cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Your basket is empty.</p>';
+    tabs.forEach(tab => tab.classList.remove('active'));
+    if(event) { event.target.classList.add('active'); }
+
+    items.forEach(item => {
+        if (categoryName === 'all') {
+            item.style.display = 'block';
         } else {
-            basket.forEach((item, index) => {
-                const itemTotal = item.price * item.quantity;
-                grandTotal += itemTotal;
-                totalItems += item.quantity;
-
-                const cartItemElement = document.createElement('div');
-                cartItemElement.classList.add('cart-item');
-                cartItemElement.innerHTML = `
-                    <div class="cart-item-info">
-                        <h4>${item.name}</h4>
-                        <p>${item.portion} (Tk ${item.price} x ${item.quantity})</p>
-                    </div>
-                    <div style="display:flex; align-items:center;">
-                        <span class="cart-item-price">Tk ${itemTotal}</span>
-                        <button class="btn-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
-                    </div>
-                `;
-                cartItemsContainer.appendChild(cartItemElement);
-            });
-        }
-
-        cartBadge.textContent = totalItems;
-        cartTotalDisplay.textContent = `Tk ${grandTotal}`;
-
-        // Add event listeners to newly created remove buttons
-        const removeBtns = document.querySelectorAll('.btn-remove');
-        removeBtns.forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                const itemIndex = e.currentTarget.getAttribute('data-index');
-                basket.splice(itemIndex, 1); // Remove item from array
-                updateCartUI(); // Re-render
-            });
-        });
-    }
-
-    // Add to Cart Logic
-    addButtons.forEach(btn => {
-        btn.addEventListener('click', (e) => {
-            const card = e.target.closest('.menu-card');
-            const itemName = card.querySelector('.item-name').textContent;
-            const selectedRadio = card.querySelector('input[type="radio"]:checked');
-            const itemPortion = selectedRadio.value;
-            const itemPrice = parseInt(selectedRadio.getAttribute('data-price'));
-            const itemQty = parseInt(card.querySelector('.qty-input').value);
-
-            // Check if item with same portion already exists in basket
-            const existingItem = basket.find(item => item.name === itemName && item.portion === itemPortion);
-
-            if (existingItem) {
-                existingItem.quantity += itemQty; // Increase quantity
+            if (item.classList.contains(categoryName)) {
+                item.style.display = 'block';
             } else {
-                basket.push({
-                    name: itemName,
-                    portion: itemPortion,
-                    price: itemPrice,
-                    quantity: itemQty
-                }); // Add new item
+                item.style.display = 'none';
             }
-
-            // Reset quantity input on card back to 1
-            card.querySelector('.qty-input').value = 1;
-            
-            // Trigger price update manually to reset display
-            const event = new Event('change');
-            selectedRadio.dispatchEvent(event);
-
-            updateCartUI();
-            openCart(); // Automatically open cart to show user it was added
-        });
+        }
     });
+}
 
-    // --- 4. Reservation Form Handling ---
-    const resForm = document.getElementById('resForm');
-    if(resForm) {
-        resForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Thank you! Your table reservation has been received.');
-            resForm.reset();
-        });
-    }
-});
+// ================= MODAL AND WIZARD CONTROLS =================
+function openBooking() {
+    document.getElementById('bookingModal').style.display = 'flex';
+    clearWizardForm();
+}
+
+function closeBooking() {
+    document.getElementById('bookingModal').style.display = 'none';
+}
+
+window.onclick = function(event) {
+    const modal = document.getElementById('bookingModal');
+    if (event.target == modal) { modal.style.display = "none"; }
+}
+
+function nextStep(targetPanel) {
+    document.querySelectorAll('.wizard-panel').forEach(panel => panel.classList.remove('active'));
+    document.getElementById('step' + targetPanel).classList.add('active');
+    updateWizardNodes(targetPanel);
+}
+
+function prevStep(targetPanel) {
+    document.querySelectorAll('.wizard-panel').forEach(panel => panel.classList.remove('active'));
+    document.getElementById('step' + targetPanel).classList.add('active');
+    updateWizardNodes(targetPanel);
+}
+
+function updateWizardNodes(panelNumber) {
+    const nodes = document.querySelectorAll('.wizard-node');
+    nodes.forEach((node, index) => {
+        if (index < panelNumber) { node.classList.add('active'); } 
+        else { node.classList.remove('active'); }
+    });
+}
+
+function confirmReservation() {
+    document.querySelector('.modal-wizard-header').style.display = 'none';
+    document.querySelectorAll('.wizard-panel').forEach(panel => panel.classList.remove('active'));
+    document.getElementById('step-success').classList.add('active');
+}
+
+function clearWizardForm() {
+    document.querySelector('.modal-wizard-header').style.display = 'flex';
+    nextStep(1);
+}
