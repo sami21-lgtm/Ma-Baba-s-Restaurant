@@ -529,19 +529,31 @@ h2 {
 
 .footer-grid-container {
     display: flex;
-    justify-content: center;
-    gap: 40px;
+    flex-direction: row; /* Poshaposhi rakhar jonno */
+    justify-content: center; /* Horizontally ekdom majhkane anbe */
+    align-items: center; /* Vertically center korbe */
+    gap: 60px; /* Duto item er majhkane shundor gap toiri korbe */
     flex-wrap: wrap;
-    margin-bottom: 30px;
+    margin: 0 auto 30px auto; /* Container takeo majhkane anbe */
+    width: 100%;
 }
 
 .footer-contact-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
+    align-items: center; /* Icon ar text ekdom majhkane thakbe */
+    justify-content: center;
+    text-align: center;
     min-width: 250px;
 }
 
+/* Mobile Screen er jonno jate venge na jay */
+@media (max-width: 600px) {
+    .footer-grid-container {
+        flex-direction: column; /* Mobile e upore niche hobe */
+        gap: 30px;
+    }
+}
 .footer-icon-circle {
     width: 45px;
     height: 45px;
