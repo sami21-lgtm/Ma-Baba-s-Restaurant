@@ -451,6 +451,32 @@ h2 {
     position: relative;
     max-height: 90vh;
     overflow-y: auto;
+    
+    /* MODAL INNER CORE ALIGNMENT SYSTEM FORCED CENTER */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+/* Header ar baki content block spacing layout perfectly centered */
+.modal-card-container h2,
+.modal-card-container h3,
+.modal-card-container p {
+    text-align: center !important;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Form block control spacing center alignment */
+.modal-card-container form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
 .modal-dismiss-trigger {
@@ -460,6 +486,7 @@ h2 {
     font-size: 28px;
     cursor: pointer;
     color: #bbb;
+    z-index: 10;
 }
 
 /* Inner Summary Box Checkout Look */
@@ -469,6 +496,7 @@ h2 {
     padding: 15px;
     border-radius: 8px;
     margin-bottom: 20px;
+    width: 100%;
 }
 
 .summary-item-row {
@@ -483,11 +511,13 @@ h2 {
     border-top: 1px solid #ddd;
     padding-top: 10px;
     margin-top: 10px;
+    width: 100%;
 }
 
 .input-form-field {
     margin-bottom: 15px;
-    text-align: left;
+    text-align: center; /* Inner components and labels centered */
+    width: 100%;
 }
 
 .input-form-field label {
@@ -495,6 +525,7 @@ h2 {
     font-size: 13px;
     font-weight: 600;
     margin-bottom: 5px;
+    text-align: center; /* Label forcing center */
 }
 
 .input-form-field input, .input-form-field textarea, .input-form-field select {
@@ -504,6 +535,7 @@ h2 {
     border-radius: 6px;
     font-size: 14px;
     outline: none;
+    text-align: center; /* Type visual centered */
 }
 
 .btn-checkout-confirm {
@@ -519,91 +551,12 @@ h2 {
     margin-top: 10px;
 }
 
-/* ================= Enhanced Reservation Box CSS ================= */
-.reservation-section-wrapper {
-    padding: 60px 8%;
-    background-color: var(--canvas-cream-bg); 
-}
-
-.reservation-box-card {
-    max-width: 700px;
-    margin: 0 auto;
-    background: var(--surface-white); 
-    padding: 40px;
-    border-radius: 16px;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); 
-    border: 1px solid var(--grid-border-color); 
-}
-
-.reservation-header {
-    text-align: center;
-    margin-bottom: 30px;
-}
-
-.reservation-header h2 {
-    color: var(--dark-charcoal);
-    font-size: 32px;
-    margin-bottom: 10px;
-}
-
-.reservation-header p {
-    color: var(--slate-muted);
-    font-size: 15px;
-}
-
-.form-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin-bottom: 25px;
-}
-
-.input-wrapper {
-    display: flex;
-    flex-direction: column;
-    text-align: left;
-}
-
-.input-wrapper label {
-    font-weight: 600;
-    margin-bottom: 8px;
-    color: var(--dark-charcoal);
-    font-size: 14px;
-}
-
-.input-wrapper input {
-    width: 100%;
-    padding: 14px 16px;
-    border: 1.5px solid var(--grid-border-color);
-    border-radius: 8px;
-    font-size: 15px;
-    font-family: inherit;
-    background-color: #fafafa;
-    transition: all 0.3s ease;
-}
-
-.input-wrapper input:focus {
-    outline: none;
-    border-color: var(--brand-orange-accent);
-    background-color: var(--surface-white);
-    box-shadow: 0 0 0 3px rgba(211, 102, 19, 0.15); 
-}
-
-.btn-full-width {
-    width: 100%;
-    padding: 16px;
-    font-size: 16px;
-    border-radius: 8px;
-    margin-top: 10px;
-}
-
-/* ================= Attractive Centered Footer Base Styling Specs ================= */
+/* Attractive Centered Footer Base Styling Specs */
 .premium-centered-footer {
-    background-color: var(--canvas-cream-bg);
+    background-color: #faf7f2;
     padding: 50px 8% 40px;
     border-top: 1px solid var(--grid-border-color);
     
-    /* Parent element ke force kore majhkane anar jonno */
     display: flex;
     flex-direction: column;
     align-items: center; 
@@ -617,7 +570,7 @@ h2 {
     gap: 40px;
     flex-wrap: wrap;
     width: 100%;
-    margin: 0 auto 30px auto; /* Ekdom majhkane lock korar jonno */
+    margin: 0 auto 30px auto; 
 }
 
 .footer-contact-card {
@@ -659,7 +612,7 @@ h2 {
     max-width: 600px;
     height: 1px;
     background-color: var(--grid-border-color);
-    margin: 0 auto 25px auto; /* Line takeo majhkane lock kora holo */
+    margin: 0 auto 25px auto; 
 }
 
 .footer-copyright-block {
@@ -678,7 +631,6 @@ h2 {
 .proprietor-tag {
     font-size: 14px;
     color: var(--slate-muted);
-    margin-top: 5px;
 }
 
 .proprietor-tag span {
@@ -714,18 +666,7 @@ h2 {
     from { bottom: 0; opacity: 0; }
     to { bottom: 30px; opacity: 1; }
 }
-
 @keyframes fadeOutTray {
     from { bottom: 30px; opacity: 1; }
     to { bottom: 0; opacity: 0; }
-}
-
-/* Mobile Screen e Reservation column */
-@media (max-width: 600px) {
-    .form-grid {
-        grid-template-columns: 1fr;
-    }
-    .reservation-box-card {
-        padding: 25px;
-    }
 }
