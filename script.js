@@ -1,231 +1,175 @@
-document.addEventListener("DOMContentLoaded", () => {
+document.addEventListener('DOMContentLoaded', () => {
 
-    
+    // --- 1. Menu Tab Filtering ---
+    const tabBtns = document.querySelectorAll('.tab-btn');
+    const menuCards = document.querySelectorAll('.menu-card');
 
-    // 1. Existing Dynamic Intelligent Scroll Tracking and Menu Filtering (Updated with new categories)
+    tabBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            // Remove active class from all buttons
+            tabBtns.forEach(b => b.classList.remove('active'));
+            // Add active class to clicked button
+            btn.classList.add('active');
 
-    const sections = document.querySelectorAll("section");
-
-    const navLinks = document.querySelectorAll(".nav-links a");
-
-
-
-    window.addEventListener("scroll", () => {
-
-        let current = "";
-
-        sections.forEach(section => {
-
-            const sectionTop = section.offsetTop;
-
-            if (pageYOffset >= sectionTop - 150) {
-
-                current = section.getAttribute("id");
-
-            }
-
-        });
-
-
-
-        navLinks.forEach(link => {
-
-            link.classList.remove("active");
-
-            if (link.getAttribute("href").includes(current)) {
-
-                link.classList.add("active");
-
-            }
-
-        });
-
-    });
-
-
-
-    const tabButtons = document.querySelectorAll(".tab-btn");
-
-    const menuCards = document.querySelectorAll(".menu-card");
-
-
-
-    tabButtons.forEach(button => {
-
-        button.addEventListener("click", () => {
-
-            tabButtons.forEach(btn => btn.classList.remove("active"));
-
-            button.classList.add("active");
-
-
-
-            const targetCategory = button.getAttribute("data-target");
-
-
+            const target = btn.getAttribute('data-target');
 
             menuCards.forEach(card => {
-
-                const cardCategory = card.getAttribute("data-category");
-
-                if (targetCategory === "all" || cardCategory === targetCategory) {
-
-                    card.style.display = "block";
-
-                    card.style.animation = "fadeIn 0.4s ease forwards";
-
+                if (target === 'all' || card.getAttribute('data-category') === target) {
+                    card.style.display = 'block';
                 } else {
-
-                    card.style.display = "none";
-
+                    card.style.display = 'none';
                 }
-
             });
-
         });
-
     });
 
-
-
-    // 2. New Portion and Quantity Calculation Logic Engine blocks for each Menu Item
-
+    // --- 2. Menu Card Price Calculation ---
     menuCards.forEach(card => {
+        const minusBtn = card.querySelector('.qty-minus');
+        const plusBtn = card.querySelector('.qty-plus');
+        const qtyInput = card.querySelector('.qty-input');
+        const priceDisplay = card.querySelector('.total-price');
+        const portionRadios = card.querySelectorAll('input[type="radio"]');
 
-        const portionInputs = card.querySelectorAll(".portion-group input[type='radio']");
-
-        const qtyInput = card.querySelector(".qty-input");
-
-        const qtyPlus = card.querySelector(".qty-plus");
-
-        const qtyMinus = card.querySelector(".qty-minus");
-
-        const totalDisplay = card.querySelector(".total-price");
-
-
-
-        // Function to re-calculate and render unique item total nodes
-
-        const updateItemTotal = () => {
-
-            let selectedPortion = card.querySelector(".portion-group input[type='radio']:checked");
-
-            let portionPrice = parseInt(selectedPortion.getAttribute("data-price"));
-
-            let quantity = parseInt(qtyInput.value);
-
-            let total = portionPrice * quantity;
-
-            totalDisplay.innerHTML = `Tk ${total}`;
-
+        function updateCardTotal() {
+            const selectedRadio = card.querySelector('input[type="radio"]:checked');
+            const basePrice = parseInt(selectedRadio.getAttribute('data-price'));
+            const quantity = parseInt(qtyInput.value);
+            const total = basePrice * quantity;
+            priceDisplay.textContent = `Tk ${total}`;
         }
 
-
-
-        // Portion Change event listener
-
-        portionInputs.forEach(input => {
-
-            input.addEventListener("change", updateItemTotal);
-
+        // Listen for portion change
+        portionRadios.forEach(radio => {
+            radio.addEventListener('change', updateCardTotal);
         });
 
-
-
-        // Quantity Plus event listener
-
-        qtyPlus.addEventListener("click", () => {
-
+        // Listen for quantity buttons
+        plusBtn.addEventListener('click', () => {
             qtyInput.value = parseInt(qtyInput.value) + 1;
-
-            updateItemTotal();
-
+            updateCardTotal();
         });
 
-
-
-        // Quantity Minus event listener
-
-        qtyMinus.addEventListener("click", () => {
-
+        minusBtn.addEventListener('click', () => {
             if (parseInt(qtyInput.value) > 1) {
-
                 qtyInput.value = parseInt(qtyInput.value) - 1;
-
-                updateItemTotal();
-
+                updateCardTotal();
             }
-
         });
-
-
-
-        // Manual Quantity Input listener with bounds check logic
-
-        qtyInput.addEventListener("input", () => {
-
-            if (parseInt(qtyInput.value) < 1 || isNaN(parseInt(qtyInput.value))) {
-
-                qtyInput.value = 1;
-
-            }
-
-            updateItemTotal();
-
-        });
-
-
-
-        // Initial setup execution block for default portion/quantity nodes
-
-        updateItemTotal();
-
     });
 
+    // --- 3. Shopping Cart System ---
+    let basket = [];
+    const cartBtn = document.getElementById('cartBtn');
+    const cartBadge = document.getElementById('cartBadge');
+    const cartOverlay = document.getElementById('cartOverlay');
+    const cartSidebar = document.getElementById('cartSidebar');
+    const closeCartBtn = document.getElementById('closeCart');
+    const cartItemsContainer = document.getElementById('cartItemsContainer');
+    const cartTotalDisplay = document.getElementById('cartTotalDisplay');
+    const addButtons = document.querySelectorAll('.btn-add-basket');
 
+    // Open & Close Cart
+    function openCart() {
+        cartSidebar.classList.add('active');
+        cartOverlay.classList.add('active');
+    }
+    function closeCart() {
+        cartSidebar.classList.remove('active');
+        cartOverlay.classList.remove('active');
+    }
 
-    // 3. Existing Automated Glassmorphic Reservation Form System
+    cartBtn.addEventListener('click', openCart);
+    closeCartBtn.addEventListener('click', closeCart);
+    cartOverlay.addEventListener('click', closeCart);
 
-    const reservationForm = document.getElementById("resForm");
+    // Render Cart UI
+    function updateCartUI() {
+        cartItemsContainer.innerHTML = '';
+        let grandTotal = 0;
+        let totalItems = 0;
 
-    const formFeedback = document.getElementById("formFeedback");
+        if (basket.length === 0) {
+            cartItemsContainer.innerHTML = '<p class="empty-cart-msg">Your basket is empty.</p>';
+        } else {
+            basket.forEach((item, index) => {
+                const itemTotal = item.price * item.quantity;
+                grandTotal += itemTotal;
+                totalItems += item.quantity;
 
+                const cartItemElement = document.createElement('div');
+                cartItemElement.classList.add('cart-item');
+                cartItemElement.innerHTML = `
+                    <div class="cart-item-info">
+                        <h4>${item.name}</h4>
+                        <p>${item.portion} (Tk ${item.price} x ${item.quantity})</p>
+                    </div>
+                    <div style="display:flex; align-items:center;">
+                        <span class="cart-item-price">Tk ${itemTotal}</span>
+                        <button class="btn-remove" data-index="${index}"><i class="fas fa-trash"></i></button>
+                    </div>
+                `;
+                cartItemsContainer.appendChild(cartItemElement);
+            });
+        }
 
+        cartBadge.textContent = totalItems;
+        cartTotalDisplay.textContent = `Tk ${grandTotal}`;
 
-    reservationForm.addEventListener("submit", (e) => {
+        // Add event listeners to newly created remove buttons
+        const removeBtns = document.querySelectorAll('.btn-remove');
+        removeBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const itemIndex = e.currentTarget.getAttribute('data-index');
+                basket.splice(itemIndex, 1); // Remove item from array
+                updateCartUI(); // Re-render
+            });
+        });
+    }
 
-        e.preventDefault();
+    // Add to Cart Logic
+    addButtons.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+            const card = e.target.closest('.menu-card');
+            const itemName = card.querySelector('.item-name').textContent;
+            const selectedRadio = card.querySelector('input[type="radio"]:checked');
+            const itemPortion = selectedRadio.value;
+            const itemPrice = parseInt(selectedRadio.getAttribute('data-price'));
+            const itemQty = parseInt(card.querySelector('.qty-input').value);
 
+            // Check if item with same portion already exists in basket
+            const existingItem = basket.find(item => item.name === itemName && item.portion === itemPortion);
 
+            if (existingItem) {
+                existingItem.quantity += itemQty; // Increase quantity
+            } else {
+                basket.push({
+                    name: itemName,
+                    portion: itemPortion,
+                    price: itemPrice,
+                    quantity: itemQty
+                }); // Add new item
+            }
 
-        const name = document.getElementById("name").value;
+            // Reset quantity input on card back to 1
+            card.querySelector('.qty-input').value = 1;
+            
+            // Trigger price update manually to reset display
+            const event = new Event('change');
+            selectedRadio.dispatchEvent(event);
 
-        const date = document.getElementById("date").value;
-
-        const time = document.getElementById("time").value;
-
-        const guests = document.getElementById("guests").value;
-
-        const seating = document.querySelector('input[name="seating"]:checked').value;
-
-
-
-        formFeedback.classList.remove("hidden");
-
-        formFeedback.innerHTML = `
-
-            <strong>Perfect!</strong> Table reservation request processed for <strong>${name}</strong>.<br>
-
-            Allocated: ${guests} Guest(s) on ${date} at ${time} inside the <strong>${seating} Section</strong>.
-
-        `;
-
-        formFeedback.classList.add("success");
-
-
-
-        reservationForm.reset();
-
+            updateCartUI();
+            openCart(); // Automatically open cart to show user it was added
+        });
     });
 
-}); 
+    // --- 4. Reservation Form Handling ---
+    const resForm = document.getElementById('resForm');
+    if(resForm) {
+        resForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Thank you! Your table reservation has been received.');
+            resForm.reset();
+        });
+    }
+});
