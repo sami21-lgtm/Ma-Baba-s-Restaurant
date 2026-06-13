@@ -2,6 +2,10 @@ let basketItemsTracker = {};
 let totalCartItemsCount = 0;
 let totalCartPriceAmount = 0;
 
+// Promo Code Allocation Flags
+let isPromoApplied = false;
+let discountAmount = 0;
+
 // ================= DYNAMIC CATEGORY SWAP FILTER =================
 function filterMenu(categoryName) {
     const items = document.querySelectorAll('.product-item-card');
@@ -65,7 +69,6 @@ function addToCart(buttonElement, productName) {
     let addedQty = parseInt(qtyInput.value);
     let calculatedTotalPrice = selectedPrice * addedQty;
     
-    // Create unique key to differentiate variants in the basket tracker array
     let uniqueItemKey = `${productName} (${selectedOptionText.split(' (')[0]})`;
     
     if (basketItemsTracker[uniqueItemKey]) {
@@ -85,7 +88,6 @@ function addToCart(buttonElement, productName) {
     updateFloatingCartUI();
     triggerAlertToast(`${addedQty}x ${productName} added to basket successfully!`);
     
-    // Reset quantity input view back to 1
     qtyInput.value = 1;
     let originalBasePrice = parseInt(variantSelect.value);
     cardBody.querySelector('.dynamic-render-price').textContent = " ৳ " + originalBasePrice;
@@ -102,6 +104,7 @@ function removeCartItem(itemKey) {
         renderCheckoutListOnly(); 
         
         if (totalCartItemsCount === 0) {
+            resetPromoStateMemory();
             toggleCheckoutModal(false);
         }
     }
@@ -118,7 +121,45 @@ function updateFloatingCartUI() {
     }
 }
 
-// ================= MODAL FRAMEWORK FLOW CONTROL INTERFACES =================
+// ================= PROMO CODE LOGIC SYSTEMS =================
+function applyPromoCode() {
+    const promoInput = document.getElementById('promoInput').value.trim().toLowerCase();
+    const msgEl = document.getElementById('promoMessage');
+    
+    if (totalCartItemsCount === 0) {
+        msgEl.style.color = '#e74c3c';
+        msgEl.textContent = "Your basket is empty!";
+        return;
+    }
+
+    if (promoInput === 'sami100') {
+        if (isPromoApplied) {
+            msgEl.style.color = '#27ae60';
+            msgEl.textContent = "Promo code already applied!";
+            return;
+        }
+        isPromoApplied = true;
+        discountAmount = 100; // Flat 100 BDT reduction setup
+        
+        msgEl.style.color = '#27ae60';
+        msgEl.textContent = "Code 'sami100' applied! You saved ৳ 100.";
+        triggerAlertToast("Promo applied! ৳ 100 Discount added.");
+        
+        renderCheckoutListOnly(); // Re-render totals dynamically
+    } else {
+        msgEl.style.color = '#e74c3c';
+        msgEl.textContent = "Invalid Promo Code! Please try again.";
+    }
+}
+
+function resetPromoStateMemory() {
+    isPromoApplied = false;
+    discountAmount = 0;
+    if (document.getElementById('promoInput')) document.getElementById('promoInput').value = '';
+    if (document.getElementById('promoMessage')) document.getElementById('promoMessage').textContent = '';
+}
+
+// ================= MODAL FLOW CONTROL INTERFACES =================
 function toggleCheckoutModal(showState) {
     const modal = document.getElementById('checkoutModal');
     if (showState && totalCartItemsCount > 0) {
@@ -129,16 +170,20 @@ function toggleCheckoutModal(showState) {
     }
 }
 
-// Separate function to update checkout UI inside the modal safely without changing open states
 function renderCheckoutListOnly() {
     const itemsListContainer = document.getElementById('checkout-items-list');
     itemsListContainer.innerHTML = ''; 
     
-    // Precise mappings corresponding exactly to card file structure for layout rendering
+    // Complete Item Image Map Matrix Including New Items
     const itemImageMap = {
         'Soft Ruti / Paratha': 'images (12).jpg',
         'Special Bhuna Daal': 'images (13).jpg',
         'Farm Fresh Egg': 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=400',
+        'Premium Hot Soup': 'https://images.unsplash.com/photo-1547592165-e1d17fed6005?auto=format&fit=crop&q=80&w=400',
+        'Soft Tandoori Naan': 'https://images.unsplash.com/photo-1601050690597-df056fb4ce78?auto=format&fit=crop&q=80&w=400',
+        'Smoky Chicken Grill': 'https://images.unsplash.com/photo-1598515214211-89d3c73ae83b?auto=format&fit=crop&q=80&w=400',
+        'Homestyle Chicken Curry': 'https://images.unsplash.com/photo-1603894584373-5ac82b2ae398?auto=format&fit=crop&q=80&w=400',
+        'Classic Beef Masala Curry': 'https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400',
         'Beef Bhuna Khichuri': 'e338491b-063e-4228-ac0e-3ca9c73536a8.png',
         'Premium Mutton Kacchi': 'images (14).jpg',
         'Chittagong Kala Bhuna': '4a1cb3da-4300-4954-b526-8ac5f40146f1.png',
@@ -181,7 +226,19 @@ function renderCheckoutListOnly() {
         `;
         itemsListContainer.appendChild(row);
     }
-    document.getElementById('summary-total-val').textContent = " ৳ " + totalCartPriceAmount.toLocaleString();
+
+    // Grand Total Math Calculation Processing Logic
+    let finalCalculatedTotal = totalCartPriceAmount - discountAmount;
+    if (finalCalculatedTotal < 0) finalCalculatedTotal = 0;
+
+    if (isPromoApplied) {
+        document.getElementById('summary-discount-block').style.display = 'flex';
+        document.getElementById('summary-discount-val').textContent = discountAmount;
+    } else {
+        document.getElementById('summary-discount-block').style.display = 'none';
+    }
+
+    document.getElementById('summary-total-val').textContent = " ৳ " + finalCalculatedTotal.toLocaleString();
 }
 
 function handleOrderSubmission(event) {
@@ -190,12 +247,16 @@ function handleOrderSubmission(event) {
     const clientName = document.getElementById('custName').value;
     const clientPhone = document.getElementById('custPhone').value;
     
-    alert(`Success! Thank you ${clientName}.\nYour order value worth ৳ ${totalCartPriceAmount.toLocaleString()} is recorded. We are dispatching confirmation shortly to ${clientPhone}.`);
+    let finalCalculatedTotal = totalCartPriceAmount - discountAmount;
+    if (finalCalculatedTotal < 0) finalCalculatedTotal = 0;
+    
+    alert(`Success! Thank you ${clientName}.\nYour order value worth ৳ ${finalCalculatedTotal.toLocaleString()} is recorded. We are dispatching confirmation shortly to ${clientPhone}.`);
     
     // Clear State Memory Trackers completely
     basketItemsTracker = {};
     totalCartItemsCount = 0;
     totalCartPriceAmount = 0;
+    resetPromoStateMemory();
     
     updateFloatingCartUI();
     document.getElementById('orderCheckoutForm').reset();
