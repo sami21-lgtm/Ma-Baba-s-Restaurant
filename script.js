@@ -1,15 +1,8 @@
-let basketItemsTracker = {}; 
+let basketItemsTracker = {};
 let totalCartItemsCount = 0;
 let totalCartPriceAmount = 0;
-let countdownTimer;
 
-// ================= MOBILE NAVBAR TOGGLE =================
-function toggleMobileNav() {
-    const navbar = document.getElementById('navbar');
-    if (navbar) navbar.classList.toggle('active');
-}
-
-// ================= FILE UPLOAD PREVIEW =================
+// ================= HANDLERS FOR FILE UPLOAD PREVIEW =================
 function previewOwnerImage(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -20,26 +13,30 @@ function previewOwnerImage(input) {
     }
 }
 
-// ================= DYNAMIC MENU FILTER =================
+// ================= DYNAMIC CATEGORY SWAP FILTER =================
 function filterMenu(categoryName) {
     const items = document.querySelectorAll('.product-item-card');
     const tabs = document.querySelectorAll('.filter-tab-btn');
+    
     tabs.forEach(tab => tab.classList.remove('active'));
-    
-    if (event && event.target) { 
-        event.target.classList.add('active'); 
+    if (event && event.target) {
+        event.target.classList.add('active');
     }
-    
+
     items.forEach(item => {
         if (categoryName === 'all') {
             item.style.display = 'block';
         } else {
-            item.style.display = item.classList.contains(categoryName) ? 'block' : 'none';
+            if (item.classList.contains(categoryName)) {
+                item.style.display = 'block';
+            } else {
+                item.style.display = 'none';
+            }
         }
     });
 }
 
-// ================= PRICE CALCULATIONS MULTIPLIERS =================
+// ================= CARD CALCULATION MULTIPLIERS =================
 function updateDynamicPricing(selectElement) {
     let cardBody = selectElement.closest('.product-card-body');
     let priceDisplay = cardBody.querySelector('.dynamic-render-price');
@@ -49,7 +46,8 @@ function updateDynamicPricing(selectElement) {
     priceDisplay.setAttribute('data-base-price', newBasePrice);
     
     let currentQty = parseInt(inputField.value);
-    priceDisplay.textContent = "৳" + (newBasePrice * currentQty);
+    let totalValue = newBasePrice * currentQty;
+    priceDisplay.textContent = " ৳ " + totalValue;
 }
 
 function updateQty(buttonElement, change) {
@@ -63,198 +61,180 @@ function updateQty(buttonElement, change) {
     if (newQty >= 1) {
         inputField.value = newQty;
         let basePrice = parseInt(priceDisplay.getAttribute('data-base-price'));
-        priceDisplay.textContent = "৳" + (basePrice * newQty);
+        priceDisplay.textContent = " ৳ " + (basePrice * newQty);
     }
 }
 
-// ================= BASKET AGGREGATION SYSTEM =================
-function addToCart(buttonElement, itemName) {
+// ================= BASKET OPERATIONS OPERATIONS ENGINE =================
+function addToCart(buttonElement, productName) {
     let cardBody = buttonElement.closest('.product-card-body');
-    let quantity = parseInt(cardBody.querySelector('.qty-input').value);
-    let priceText = cardBody.querySelector('.dynamic-render-price').textContent;
-    let itemTotalPrice = parseInt(priceText.replace('৳', ''));
+    let variantSelect = cardBody.querySelector('.variant-select');
+    let qtyInput = cardBody.querySelector('.qty-input');
     
-    if (basketItemsTracker[itemName]) {
-        basketItemsTracker[itemName].qty += quantity;
-        basketItemsTracker[itemName].totalPrice += itemTotalPrice;
+    let selectedOptionText = variantSelect.options[variantSelect.selectedIndex].text;
+    let selectedPrice = parseInt(variantSelect.value);
+    let addedQty = parseInt(qtyInput.value);
+    let calculatedTotalPrice = selectedPrice * addedQty;
+    
+    // Create unique key to differentiate variants in the basket tracker array
+    let uniqueItemKey = `${productName} (${selectedOptionText.split(' (')[0]})`;
+    
+    if (basketItemsTracker[uniqueItemKey]) {
+        basketItemsTracker[uniqueItemKey].qty += addedQty;
+        basketItemsTracker[uniqueItemKey].totalPrice += calculatedTotalPrice;
     } else {
-        basketItemsTracker[itemName] = {
-            qty: quantity,
-            totalPrice: itemTotalPrice
+        basketItemsTracker[uniqueItemKey] = {
+            baseName: productName,
+            qty: addedQty,
+            totalPrice: calculatedTotalPrice
         };
     }
     
+    totalCartItemsCount += addedQty;
+    totalCartPriceAmount += calculatedTotalPrice;
+    
     updateFloatingCartUI();
-    showToastNotification(`<i class="fa-solid fa-circle-check"></i> Added <strong>${quantity}x ${itemName}</strong> to basket`);
+    triggerAlertToast(`${addedQty}x ${productName} added to basket successfully!`);
+    
+    // Reset quantity input view back to 1
+    qtyInput.value = 1;
+    let originalBasePrice = parseInt(variantSelect.value);
+    cardBody.querySelector('.dynamic-render-price').textContent = " ৳ " + originalBasePrice;
 }
 
-// ================= UPDATE FLOATING CART BAR =================
-function updateFloatingCartUI() {
-    totalCartItemsCount = 0;
-    totalCartPriceAmount = 0;
-    
-    for (let name in basketItemsTracker) {
-        totalCartItemsCount += basketItemsTracker[name].qty;
-        totalCartPriceAmount += basketItemsTracker[name].totalPrice;
-    }
-    
-    document.getElementById('cart-item-count').textContent = totalCartItemsCount;
-    document.getElementById('cart-total-price').textContent = "৳" + totalCartPriceAmount.toLocaleString();
-    
-    const floatingCart = document.getElementById('floating-cart');
-    if (totalCartItemsCount > 0) {
-        floatingCart.classList.remove('hidden');
-    } else {
-        floatingCart.classList.add('hidden');
-        toggleCheckoutModal(false); 
-    }
-}
-
-// ================= NEW CORE FUNCTION: DELETE ITEM FROM CART =================
-function removeCartItem(itemName) {
-    if (basketItemsTracker[itemName]) {
-        delete basketItemsTracker[itemName];
-        updateFloatingCartUI();
+function removeCartItem(itemKey) {
+    if (basketItemsTracker[itemKey]) {
+        totalCartItemsCount -= basketItemsTracker[itemKey].qty;
+        totalCartPriceAmount -= basketItemsTracker[itemKey].totalPrice;
         
-        // Modal ভিউ ওপেন থাকা অবস্থায় ডিলিট করলে লিস্ট লাইভ রিফ্রেশ করার জন্য
-        const modal = document.getElementById('checkoutModal');
-        if (modal && modal.style.display === 'flex') {
-            renderCheckoutList();
+        delete basketItemsTracker[itemKey];
+        
+        updateFloatingCartUI();
+        renderCheckoutListOnly(); 
+        
+        if (totalCartItemsCount === 0) {
+            toggleCheckoutModal(false);
         }
-        showToastNotification(`<i class="fa-solid fa-trash-can"></i> Removed <strong>${itemName}</strong> from basket`);
     }
 }
 
-// ================= RENDER MODAL BASKET LIST WITH DELETE =================
-function renderCheckoutList() {
-    const itemsListContainer = document.getElementById('checkout-items-list');
-    if (!itemsListContainer) return;
-    
-    itemsListContainer.innerHTML = ''; 
-    
-    for (let name in basketItemsTracker) {
-        let record = basketItemsTracker[name];
-        let row = document.createElement('div');
-        row.className = 'summary-item-row';
-        row.innerHTML = `
-            <div class="cart-item-info">
-                <span style="font-weight:600;">${name}</span>
-                <span style="font-size:12px; color:var(--slate-muted);">Qty: ${record.qty}</span>
-            </div>
-            <div class="cart-item-actions">
-                <span class="cart-item-price">৳${record.totalPrice}</span>
-                <button type="button" class="btn-delete-cart-item" onclick="removeCartItem('${name}')" title="Delete Item">
-                    <i class="fa-solid fa-trash-can"></i>
-                </button>
-            </div>
-        `;
-        itemsListContainer.appendChild(row);
+function updateFloatingCartUI() {
+    const floatingBar = document.getElementById('floating-cart');
+    if (totalCartItemsCount > 0) {
+        floatingBar.classList.remove('hidden');
+        document.getElementById('cart-item-count').textContent = totalCartItemsCount;
+        document.getElementById('cart-total-price').textContent = " ৳ " + totalCartPriceAmount.toLocaleString();
+    } else {
+        floatingBar.classList.add('hidden');
     }
-    document.getElementById('summary-total-val').textContent = "৳" + totalCartPriceAmount.toLocaleString();
 }
 
-// ================= CHECKOUT MODAL DRAWER VISIBILITY =================
+// ================= MODAL FRAMEWORK FLOW CONTROL INTERFACES =================
 function toggleCheckoutModal(showState) {
     const modal = document.getElementById('checkoutModal');
-    if (!modal) return;
-    
-    if (showState) {
-        renderCheckoutList();
+    if (showState && totalCartItemsCount > 0) {
+        renderCheckoutListOnly();
         modal.style.display = 'flex';
     } else {
         modal.style.display = 'none';
     }
 }
 
-// ================= TOAST SYSTEM OVERLAY =================
-function showToastNotification(message) {
-    const toast = document.getElementById("toast-notification");
-    if (toast) {
-        toast.innerHTML = message;
-        toast.classList.add("show");
-        setTimeout(function(){ toast.classList.remove("show"); }, 2000);
-    }
-}
-
-// ================= PREMIUM OTP VERIFICATION DIALOG SYSTEM =================
-function openOtpModal(event) {
-    event.preventDefault(); 
+// Separate function to update checkout UI inside the modal safely without changing open states
+function renderCheckoutListOnly() {
+    const itemsListContainer = document.getElementById('checkout-items-list');
+    itemsListContainer.innerHTML = ''; 
     
-    if (totalCartPriceAmount <= 0) {
-        alert("Your cart is empty!");
-        return;
+    // Precise mappings corresponding exactly to card file structure for layout rendering
+    const itemImageMap = {
+        'Soft Ruti / Paratha': 'images (12).jpg',
+        'Special Bhuna Daal': 'images (13).jpg',
+        'Farm Fresh Egg': 'https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=400',
+        'Beef Bhuna Khichuri': 'e338491b-063e-4228-ac0e-3ca9c73536a8.png',
+        'Premium Mutton Kacchi': 'images (14).jpg',
+        'Chittagong Kala Bhuna': '4a1cb3da-4300-4954-b526-8ac5f40146f1.png',
+        'Old Dhaka Beef Tehari': 'https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=400',
+        'Premium Golap Jam': '0ddd6c12-16ec-45c4-b487-b80951e661d3.png',
+        'Traditional Kalo Jam': '5c9a67e3-cf74-4c1d-8284-d8286d70bffe.png',
+        'Spongy Roshogolla': '32592ad6-fe80-41e8-a7a3-872e94c0bc1c.png',
+        'Premium Sondesh': '74221d1f-efce-452f-8731-e368a05f2e5b.png',
+        'Dark Chocolate Cake': 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=400',
+        'Premium Sponge Cake': '0f144ebe-252c-474d-b4fd-5b2fb102b76b.png',
+        'Vanilla Bean Cake': 'efbacffe-7036-4fd0-beb4-43eafe0c7e00.png',
+        'Traditional Borhani': 'images (11).jpg',
+        'Coca-Cola': 'coca-cola.jpg',
+        '7up': '7up.jpg',
+        'Mojo': 'mojo.jpg'
+    };
+
+    for (let itemKey in basketItemsTracker) {
+        let record = basketItemsTracker[itemKey];
+        let row = document.createElement('div');
+        row.className = 'summary-item-row';
+        row.style.display = 'flex';
+        row.style.alignItems = 'center';
+        row.style.justifyContent = 'space-between';
+        row.style.marginBottom = '12px';
+        
+        let imageUrl = itemImageMap[record.baseName] || 'https://via.placeholder.com/40';
+
+        row.innerHTML = `
+            <div class="cart-item-info" style="display: flex; align-items: center; gap: 10px;">
+                <img src="${imageUrl}" style="width: 40px; height: 40px; object-fit: cover; border-radius: 6px; border: 1px solid #ddd;" onerror="this.src='https://via.placeholder.com/40'">
+                <span style="font-weight:600; font-size:13px;">${itemKey} <strong>(x${record.qty})</strong></span>
+            </div>
+            <div class="cart-item-actions" style="display: flex; align-items: center; gap: 15px;">
+                <span class="cart-item-price" style="font-weight: 700;"> ৳ ${record.totalPrice}</span>
+                <button type="button" class="btn-delete-cart-item" onclick="removeCartItem('${itemKey}')" title="Delete Item" style="background:none; border:none; color:#e74c3c; cursor:pointer;">
+                    <i class="fa-solid fa-trash-can"></i>
+                </button>
+            </div>
+        `;
+        itemsListContainer.appendChild(row);
     }
+    document.getElementById('summary-total-val').textContent = " ৳ " + totalCartPriceAmount.toLocaleString();
+}
+
+function handleOrderSubmission(event) {
+    event.preventDefault();
     
-    let phoneNum = document.getElementById('custPhone').value;
-    document.getElementById('otp-target-phone').textContent = phoneNum;
-    
-    document.getElementById('checkoutModal').style.display = 'none';
-    document.getElementById('otpModal').style.display = 'flex';
-    document.getElementById('opt1').focus();
-    startOtpCountdown();
-}
-
-function closeOtpModal() {
-    document.getElementById('otpModal').style.display = 'none';
-    clearInterval(countdownTimer);
-}
-
-function moveOtpFocus(current, nextInputId) {
-    if (current.value.length >= 1 && nextInputId !== "") {
-        document.getElementById(nextInputId).focus();
-    }
-}
-
-function startOtpCountdown() {
-    let timeLeft = 59;
-    const timerDisplay = document.getElementById('otp-timer');
-    clearInterval(countdownTimer);
-    
-    countdownTimer = setInterval(() => {
-        if(timeLeft <= 0) {
-            clearInterval(countdownTimer);
-            timerDisplay.textContent = "Resend Available";
-        } else {
-            timerDisplay.textContent = `00:${timeLeft < 10 ? '0' : ''}${timeLeft}`;
-        }
-        timeLeft -= 1;
-    }, 1000);
-}
-
-function verifyOtpAndSubmit() {
-    const o1 = document.getElementById('opt1').value;
-    const o2 = document.getElementById('opt2').value;
-    const o3 = document.getElementById('opt3').value;
-    const o4 = document.getElementById('opt4').value;
-    const finalOtpString = o1 + o2 + o3 + o4;
-
-    if(finalOtpString.length < 4) {
-        alert("Please fill up all 4-digit verification input pins.");
-        return;
-    }
-
     const clientName = document.getElementById('custName').value;
     const clientPhone = document.getElementById('custPhone').value;
     
-    alert(`OTP Verified Successfully!\n\nThank you ${clientName}.\nYour order value worth ৳${totalCartPriceAmount} is recorded successfully. We are dispatching confirmation shortly to ${clientPhone}.`);
+    alert(`Success! Thank you ${clientName}.\nYour order value worth ৳ ${totalCartPriceAmount.toLocaleString()} is recorded. We are dispatching confirmation shortly to ${clientPhone}.`);
     
-    // Reset Data State
+    // Clear State Memory Trackers completely
     basketItemsTracker = {};
+    totalCartItemsCount = 0;
+    totalCartPriceAmount = 0;
+    
     updateFloatingCartUI();
     document.getElementById('orderCheckoutForm').reset();
-    
-    document.getElementById('opt1').value = '';
-    document.getElementById('opt2').value = '';
-    document.getElementById('opt3').value = '';
-    document.getElementById('opt4').value = '';
-
-    closeOtpModal();
+    toggleCheckoutModal(false);
 }
 
-// WINDOW DISMISS EVENT LISTENER
+// ================= BOOKING MODALS TRIGGERS =================
+function openBooking() { 
+    document.getElementById('bookingModal').style.display = 'flex'; 
+}
+function closeBooking() { 
+    document.getElementById('bookingModal').style.display = 'none'; 
+}
+
 window.onclick = function(event) {
+    const bModal = document.getElementById('bookingModal');
     const cModal = document.getElementById('checkoutModal');
-    const oModal = document.getElementById('otpModal');
+    if (event.target == bModal) bModal.style.display = "none";
     if (event.target == cModal) cModal.style.display = "none";
-    if (event.target == oModal) closeOtpModal();
+}
+
+// ================= TOAST ALERTS ENGINES =================
+function triggerAlertToast(alertMessage) {
+    const toast = document.getElementById('toast-notification');
+    toast.textContent = alertMessage;
+    toast.className = "show-alert";
+    
+    setTimeout(function() { 
+        toast.className = toast.className.replace("show-alert", ""); 
+    }, 2800);
 }
