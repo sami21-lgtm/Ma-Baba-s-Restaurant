@@ -1,7 +1,8 @@
-let totalCartItems = 0;
-let totalCartPrice = 0;
+let basketItemsTracker = {}; 
+let totalCartItemsCount = 0;
+let totalCartPriceAmount = 0;
 
-// ================= MODERN PHOTO UPLOAD PREVIEW =================
+// ================= HANDLERS FOR FILE UPLOAD PREVIEW =================
 function previewOwnerImage(input) {
     if (input.files && input.files[0]) {
         const reader = new FileReader();
@@ -12,18 +13,16 @@ function previewOwnerImage(input) {
     }
 }
 
-// ================= CATEGORY FILTER TRIGGER =================
+// ================= DYNAMIC CATEGORY SWAP FILTER =================
 function filterMenu(categoryName) {
     const items = document.querySelectorAll('.product-item-card');
     const tabs = document.querySelectorAll('.filter-tab-btn');
 
-    // Active tab styling highlight switch
     tabs.forEach(tab => tab.classList.remove('active'));
-    if(event && event.target) { 
+    if (event && event.target) { 
         event.target.classList.add('active'); 
     }
 
-    // Show/Hide items based on category flags
     items.forEach(item => {
         if (categoryName === 'all') {
             item.style.display = 'block';
@@ -37,17 +36,15 @@ function filterMenu(categoryName) {
     });
 }
 
-// ================= DYNAMIC PRICING ENGINE =================
+// ================= CARD CALCULATION MULTIPLIERS =================
 function updateDynamicPricing(selectElement) {
     let cardBody = selectElement.closest('.product-card-body');
     let priceDisplay = cardBody.querySelector('.dynamic-render-price');
     let inputField = cardBody.querySelector('.qty-input');
     
-    // Read variant rate value
     let newBasePrice = parseInt(selectElement.value);
     priceDisplay.setAttribute('data-base-price', newBasePrice);
     
-    // Cross multiply counter with current selected variant price
     let currentQty = parseInt(inputField.value);
     let totalValue = newBasePrice * currentQty;
     
@@ -62,7 +59,6 @@ function updateQty(buttonElement, change) {
     let currentQty = parseInt(inputField.value);
     let newQty = currentQty + change;
     
-    // Logic boundary check (Minimum quantity safe guard is 1)
     if (newQty >= 1) {
         inputField.value = newQty;
         let basePrice = parseInt(priceDisplay.getAttribute('data-base-price'));
@@ -71,54 +67,93 @@ function updateQty(buttonElement, change) {
     }
 }
 
-// ================= FOODPANDA FLOATING BASKET ACTION =================
+// ================= FOODPANDA STYLE BASKET AGGREGATION =================
 function addToCart(buttonElement, itemName) {
     let cardBody = buttonElement.closest('.product-card-body');
     let quantity = parseInt(cardBody.querySelector('.qty-input').value);
-    
-    // Extract calculated text rate value
     let priceText = cardBody.querySelector('.dynamic-render-price').textContent;
     let itemTotalPrice = parseInt(priceText.replace('৳', ''));
     
-    // Update global variables
-    totalCartItems += quantity;
-    totalCartPrice += itemTotalPrice;
+    // Store dynamically inside unique identification registry tracking system
+    if (basketItemsTracker[itemName]) {
+        basketItemsTracker[itemName].qty += quantity;
+        basketItemsTracker[itemName].totalPrice += itemTotalPrice;
+    } else {
+        basketItemsTracker[itemName] = {
+            qty: quantity,
+            totalPrice: itemTotalPrice
+        };
+    }
 
-    // Update Floating basket indicators
-    document.getElementById('cart-item-count').textContent = totalCartItems;
-    document.getElementById('cart-total-price').textContent = "৳" + totalCartPrice.toLocaleString();
+    totalCartItemsCount += quantity;
+    totalCartPriceAmount += itemTotalPrice;
+
+    document.getElementById('cart-item-count').textContent = totalCartItemsCount;
+    document.getElementById('cart-total-price').textContent = "৳" + totalCartPriceAmount.toLocaleString();
     
-    // Slide up animation wrapper for the floating foodpanda cart
     const floatingCart = document.getElementById('floating-cart');
     if (floatingCart) {
         floatingCart.classList.remove('hidden');
     }
 
-    // Launch alert feedback toast notification
     const toast = document.getElementById("toast-notification");
     if (toast) {
         toast.innerHTML = `<i class="fa-solid fa-circle-check"></i> Added <strong>${quantity}x ${itemName}</strong> to basket`;
         toast.className = "show";
-        
-        setTimeout(function(){ 
-            toast.className = toast.className.replace("show", ""); 
-        }, 2000);
+        setTimeout(function(){ toast.className = toast.className.replace("show", ""); }, 2000);
     }
 }
 
-// ================= BOOKING MODAL CONTROLS =================
-function openBooking() {
-    document.getElementById('bookingModal').style.display = 'flex';
+// ================= ACTIVE MOVEMENT CHECKOUT MODAL LOGIC =================
+function toggleCheckoutModal(showState) {
+    const modal = document.getElementById('checkoutModal');
+    if (showState) {
+        const itemsListContainer = document.getElementById('checkout-items-list');
+        itemsListContainer.innerHTML = ''; 
+
+        // Generate matching records inside view block
+        for (let name in basketItemsTracker) {
+            let record = basketItemsTracker[name];
+            let row = document.createElement('div');
+            row.className = 'summary-item-row';
+            row.innerHTML = `<span>${name} <strong>(x${record.qty})</strong></span> <span>৳${record.totalPrice}</span>`;
+            itemsListContainer.appendChild(row);
+        }
+
+        document.getElementById('summary-total-val').textContent = "৳" + totalCartPriceAmount.toLocaleString();
+        modal.style.display = 'flex';
+    } else {
+        modal.style.display = 'none';
+    }
 }
 
-function closeBooking() {
-    document.getElementById('bookingModal').style.display = 'none';
+function handleOrderSubmission(event) {
+    event.preventDefault();
+    
+    const clientName = document.getElementById('custName').value;
+    const clientPhone = document.getElementById('custPhone').value;
+    
+    alert(`Success! Thank you ${clientName}.\nYour order value worth ৳${totalCartPriceAmount} is recorded. We are dispatching confirmation shortly to ${clientPhone}.`);
+    
+    // Clear State Memory
+    basketItemsTracker = {};
+    totalCartItemsCount = 0;
+    totalCartPriceAmount = 0;
+    
+    document.getElementById('cart-item-count').textContent = '0';
+    document.getElementById('cart-total-price').textContent = '৳0';
+    document.getElementById('floating-cart').classList.add('hidden');
+    document.getElementById('orderCheckoutForm').reset();
+    toggleCheckoutModal(false);
 }
 
-// Close modal when clicking outside
+// ================= BOOKING MODALS TRIGGERS =================
+function openBooking() { document.getElementById('bookingModal').style.style.display = 'flex'; }
+function closeBooking() { document.getElementById('bookingModal').style.display = 'none'; }
+
 window.onclick = function(event) {
-    const modal = document.getElementById('bookingModal');
-    if (event.target == modal) {
-        modal.style.display = "none";
-    }
+    const bModal = document.getElementById('bookingModal');
+    const cModal = document.getElementById('checkoutModal');
+    if (event.target == bModal) bModal.style.display = "none";
+    if (event.target == cModal) cModal.style.display = "none";
 }
