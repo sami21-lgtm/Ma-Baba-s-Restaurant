@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sami's Restaurant | Premium Dining</title>
+    <title>Vee's Restaurant | Premium Dining</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
@@ -13,7 +13,7 @@
     </div>
     
     <header>
-        <div class="logo">Sami's Restaurant</div>
+        <div class="logo">Vee's Restaurant</div>
         <nav>
             <a href="#home">Home</a>
             <a href="#about">About</a>
@@ -26,7 +26,7 @@
 
     <section id="home" class="hero-viewport" style="padding: 0;">
         <div class="hero-overlay-content">
-            <h1>Sami's Restaurant</h1>
+            <h1>Vee's Restaurant</h1>
             <p>Exquisite flavors, warm hospitality in the heart of Dhaka's culinary scene. Authentic Bangladeshi warmth and global flair.</p>
             <div class="hero-action-btns">
                 <button class="btn-primary" onclick="window.location.href='#menu'">Explore Menu</button>
@@ -503,7 +503,7 @@
 
             <div class="product-item-card lunch dinner">
                 <span class="badge-popular"><i class="fa-solid fa-pepper-hot"></i> Hot & Spicy</span>
-                <img src="download (15).jpg" alt="Tom Yum Goong">
+                <img src="https://images.unsplash.com/photo-1548946526-f69e2424cf45?auto=format&fit=crop&q=80&w=400" alt="Tom Yum Goong">
                 <div class="product-card-body">
                     <h3>Authentic Tom Yum Goong</h3>
                     <p>World-famous spicy and sour Thai soup with fresh prawns and lemongrass.</p>
@@ -665,7 +665,7 @@
             </div>
 
             <div class="product-item-card drinks lunch dinner">
-                <img src="7up.jpg" alt="7 Up">
+                <img src="https://images.unsplash.com/photo-1625772299848-391b6a87d7b3?auto=format&fit=crop&q=80&w=400" alt="7 Up">
                 <div class="product-card-body">
                     <h3>Refreshing 7 Up</h3>
                     <p>Crisp, clean lemon-lime flavored carbonated soft drink.</p>
@@ -694,7 +694,7 @@
             </div>
 
             <div class="product-item-card drinks lunch dinner">
-                <img src="mojo.jpg" alt="Mojo">
+                <img src="https://images.unsplash.com/photo-1622543925917-763c34d1a86e?auto=format&fit=crop&q=80&w=400" alt="Mojo">
                 <div class="product-card-body">
                     <h3>Mojo</h3>
                     <p>Popular local carbonated cola drink with a bold and refreshing taste.</p>
@@ -725,36 +725,34 @@
         </div>
     </section>
 
-   <section id="reservation-section" class="reservation-section-wrapper">
-    <div class="reservation-box-card">
-        <div class="reservation-header">
-            <h2>Reserve Your Table</h2>
-            <p>Book a table in advance to enjoy a premium dining experience without the wait.</p>
+    <section id="reservation-section" style="padding: 60px 8%; background-color: #fdfdfd; border-top: 1px solid #eee;">
+        <div class="reservation-box-wrapper">
+            <h2 style="color: var(--brand-orange-accent); margin-bottom: 10px; font-size: 28px;">Reserve Your Table</h2>
+            <p style="color: var(--slate-muted); font-size: 14px; margin-bottom: 25px;">Book a table in advance to enjoy a premium dining experience without the wait.</p>
+            
+            <form onsubmit="event.preventDefault(); alert('Your table reservation request has been received successfully! We will contact you soon.'); this.reset();">
+                <div class="reservation-form-grid">
+                    <div>
+                        <label>Full Name</label>
+                        <input type="text" required placeholder="Your Name">
+                    </div>
+                    <div>
+                        <label>Phone Number</label>
+                        <input type="tel" required placeholder="017XXXXXXXX">
+                    </div>
+                    <div>
+                        <label>Date & Time</label>
+                        <input type="datetime-local" required>
+                    </div>
+                    <div>
+                        <label>Number of Guests</label>
+                        <input type="number" min="1" required placeholder="E.g., 4">
+                    </div>
+                </div>
+                <button type="submit" class="btn-primary" style="margin-top: 25px; width: 100%; padding: 14px; font-size: 16px;">Confirm Reservation</button>
+            </form>
         </div>
-        
-        <form class="reservation-form" onsubmit="event.preventDefault(); alert('Reservation confirmed!'); this.reset();">
-            <div class="form-grid">
-                <div class="input-wrapper">
-                    <label>Full Name</label>
-                    <input type="text" required placeholder="Your Name">
-                </div>
-                <div class="input-wrapper">
-                    <label>Phone Number</label>
-                    <input type="tel" required placeholder="017XXXXXXXX">
-                </div>
-                <div class="input-wrapper">
-                    <label>Date & Time</label>
-                    <input type="datetime-local" required>
-                </div>
-                <div class="input-wrapper">
-                    <label>Number of Guests</label>
-                    <input type="number" min="1" required placeholder="E.g., 4">
-                </div>
-            </div>
-            <button type="submit" class="btn-primary btn-full-width">Confirm Reservation</button>
-        </form>
-    </div>
-</section>
+    </section>
 
     <section id="contact" style="padding: 50px 8%; text-align: center; background-color: #fff;">
         <div class="section-title-block" style="margin-bottom: 30px;">
