@@ -2,17 +2,6 @@ let basketItemsTracker = {};
 let totalCartItemsCount = 0;
 let totalCartPriceAmount = 0;
 
-// ================= HANDLERS FOR FILE UPLOAD PREVIEW =================
-function previewOwnerImage(input) {
-    if (input.files && input.files[0]) {
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            document.getElementById('owner-profile-img').src = e.target.result;
-        };
-        reader.readAsDataURL(input.files[0]);
-    }
-}
-
 // ================= DYNAMIC CATEGORY SWAP FILTER =================
 function filterMenu(categoryName) {
     const items = document.querySelectorAll('.product-item-card');
@@ -65,7 +54,7 @@ function updateQty(buttonElement, change) {
     }
 }
 
-// ================= BASKET OPERATIONS OPERATIONS ENGINE =================
+// ================= BASKET OPERATIONS ENGINE =================
 function addToCart(buttonElement, productName) {
     let cardBody = buttonElement.closest('.product-card-body');
     let variantSelect = cardBody.querySelector('.variant-select');
