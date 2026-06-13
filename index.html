@@ -1,16 +1,22 @@
+Apnar shubidhar jonno ami puro project-er HTML, CSS ebong JavaScript ek jaigay kore dichhi. Ager joto problem chilo (chobi, quantity counter, dynamic taka hishab, Foodpanda badge, ar ekdom nicher contact & footer design jekhane apnar nam ache)—sobkichu ei final code-e eksathe jora ache.
+
+Apni just apnar purono file gulo clear kore nicher code gulo copy-paste kore din:
+
+১. Full index.html
+HTML
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vee's Restaurant | Premium Management Platform</title>
+    <title>Vee's Restaurant | Premium Dining</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="promo-discount-bar">
-        <p><i class="fa-solid fa-tag"></i> Celebrate the Season! Enjoy a flat <strong>15% DISCOUNT</strong> on all premium booth reservations today.</p>
+        Enjoy 20% off on all authentic Bangladeshi dishes this weekend! Use code: DHAKA20
     </div>
 
     <header>
@@ -18,45 +24,35 @@
         <nav>
             <a href="#home">Home</a>
             <a href="#about">About</a>
-            <a href="#menu">Signature Menu</a>
+            <a href="#menu">Menu</a>
             <a href="#gallery">Gallery</a>
             <a href="#contact">Contact</a>
         </nav>
         <button class="btn-reserve" onclick="openBooking()">Reserve Table</button>
     </header>
 
-    <section id="home" class="hero-viewport">
+    <section id="home" class="hero-viewport" style="padding: 0;">
         <div class="hero-overlay-content">
             <h1>Vee's Restaurant</h1>
             <p>Exquisite flavors, warm hospitality in the heart of Dhaka's culinary scene. Authentic Bangladeshi warmth and global flair.</p>
             <div class="hero-action-btns">
-                <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView();">Explore Menu</button>
-                <button class="btn-secondary" onclick="openBooking()">Book a Table</button>
+                <button class="btn-primary" onclick="window.location.href='#menu'">Explore Menu</button>
+                <button class="btn-secondary" onclick="openBooking()">Reserve Table</button>
             </div>
         </div>
     </section>
 
     <section id="about" class="about-story-section">
         <div class="section-title-block">
-            <h2>Our Story & Craft</h2>
+            <h2>Our Story & Leadership</h2>
             <p>Where premium culinary vision meets authentic warmth and global flair.</p>
-        </div>
-        
-        <div class="media-story-grid">
-            <div class="media-box"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=400" alt="Interior View"></div>
-            <div class="media-box"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=400" alt="Kitchen Setup"></div>
-            <div class="media-box"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=400" alt="Dining Table"></div>
-            <div class="media-box"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=400" alt="Plated Dish"></div>
-            <div class="media-box"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" alt="Steak Cooking"></div>
-            <div class="media-box"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=400" alt="Bar Counter"></div>
         </div>
 
         <div class="chefs-flex-row">
             
             <div class="chef-profile-card owner-highlight">
                 <div class="profile-image-wrapper">
-                    <img id="owner-profile-img" src="Md. EmTIAZ hOSSAIN sAMI LOGO.png"auto=format&fit=crop&q=80&w=300" alt="Md. Emtiaz Hossain Sami">
-                    
+                    <img id="owner-profile-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300" alt="Md. Emtiaz Hossain Sami">
                     <label for="owner-upload-input" class="image-upload-overlay" title="Upload Your Custom Photo">
                         <i class="fa-solid fa-camera"></i>
                         <span>Change</span>
@@ -76,33 +72,15 @@
                 <p class="chef-role-tag">Executive Chef</p>
                 <p class="chef-biography">With over 12 years of experience in fine dining. Crafts menus that tell unique stories of heritage with international sophistication.</p>
             </div>
-
-            <div class="chef-profile-card">
-                <div class="profile-image-wrapper normal-chef-border">
-                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=300" alt="Chef Michael">
-                </div>
-                <h3>Michael Adebayo</h3>
-                <p class="chef-role-tag">Sous Chef / Grill Master</p>
-                <p class="chef-biography">Mastery of open-fire cooking and traditional techniques brings out the bold, smoky premium flavors that our restaurant is famous for.</p>
-            </div>
         </div>
     </section>
 
-    <section id="gallery" class="ambience-gallery-section">
-        <h2>Our Space & Atmosphere</h2>
-        <p>Intimate lighting, earthy textures, and a vibrant energy—the Vee's experience starts the moment you walk in.</p>
-        <div class="ambience-row">
-            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=500" alt="Atmosphere 1">
-            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=500" alt="Atmosphere 2">
-            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=500" alt="Atmosphere 3">
+    <section id="menu">
+        <div class="section-title-block">
+            <h4 class="sub-heading-accent">Our Signature Menu</h4>
+            <h2>From timeless classics to modern twists</h2>
         </div>
-    </section>
 
-    <section id="menu" class="menu-display-section">
-        <p class="sub-heading-accent">Our Culinary Art</p>
-        <h2>Discover Our Menu</h2>
-        <p class="menu-subtext">From timeless classics to modern twists—each plate tells a story of passion.</p>
-        
         <div class="menu-filter-bar">
             <button class="filter-tab-btn active" onclick="filterMenu('all')">All</button>
             <button class="filter-tab-btn" onclick="filterMenu('bangladeshi')">Bangladeshi Cuisine</button>
@@ -113,221 +91,319 @@
         <div class="menu-products-container">
             
             <div class="product-item-card bangladeshi">
-                <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=400" alt="Beef Biriyani">
-                <div class="product-card-body">
-                    <h3>Traditional Beef Biriyani</h3>
-                    <p>Aromatic chinigura rice cooked with tender beef and rich spices.</p>
-                    <div class="product-dropdown-control">
-                        <label>Portion:</label>
-                        <select onchange="updatePlatePricing(this, 180, 250)">
-                            <option value="full">Full Plate</option>
-                            <option value="half">Half Plate</option>
-                        </select>
-                    </div>
-                    <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳250</span>
-                        <button class="btn-cart" onclick="addToCart('Traditional Beef Biriyani')"><i class="fa-solid fa-cart-plus"></i> Add</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-item-card bangladeshi">
-                <img src="https://images.unsplash.com/photo-1601050690597-df056fb49785?auto=format&fit=crop&q=80&w=400" alt="Butter Nun">
-                <div class="product-card-body">
-                    <h3>Soft Butter Nun</h3>
-                    <p>Freshly baked tandoor flatbread brushed with premium butter.</p>
-                    <div class="product-dropdown-control">
-                        <label>Portion:</label>
-                        <select onchange="updatePlatePricing(this, 40, 80)">
-                            <option value="full">Full Plate (2 Pcs)</option>
-                            <option value="half">Half Plate (1 Pc)</option>
-                        </select>
-                    </div>
-                    <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳80</span>
-                        <button class="btn-cart" onclick="addToCart('Soft Butter Nun')"><i class="fa-solid fa-cart-plus"></i> Add</button>
-                    </div>
-                </div>
-            </div>
-
-            <div class="product-item-card bangladeshi">
+                <span class="badge-popular badge-bestseller"><i class="fa-solid fa-star"></i> Bestseller</span>
                 <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80&w=400" alt="Mutton Kacchi">
                 <div class="product-card-body">
                     <h3>Premium Mutton Kacchi</h3>
                     <p>Layered basmati rice cooked with juicy mutton pieces and alu.</p>
                     <div class="product-dropdown-control">
                         <label>Portion:</label>
-                        <select onchange="updatePlatePricing(this, 250, 450)">
-                            <option value="full">Full Plate</option>
-                            <option value="half">Half Plate</option>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="450">Full Plate (৳450)</option>
+                            <option value="250">Half Plate (৳250)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳450</span>
-                        <button class="btn-cart" onclick="addToCart('Premium Mutton Kacchi')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="450">৳450</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Premium Mutton Kacchi')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card bangladeshi">
-                <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&q=80&w=400" alt="Beef Bhuna">
+                <span class="badge-popular">Popular</span>
+                <img src="https://images.unsplash.com/photo-1603050868846-9d32d32517cb?auto=format&fit=crop&q=80&w=400" alt="Kala Bhuna">
                 <div class="product-card-body">
-                    <h3>Spicy Beef Bhuna</h3>
-                    <p>Deeply roasted beef curry gravy cooked with traditional spices.</p>
+                    <h3>Chittagong Kala Bhuna</h3>
+                    <p>Authentic dark roasted beef curry with secret traditional spices.</p>
                     <div class="product-dropdown-control">
                         <label>Portion:</label>
-                        <select onchange="updatePlatePricing(this, 150, 280)">
-                            <option value="full">Full Plate</option>
-                            <option value="half">Half Plate</option>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="550">Full Plate (৳550)</option>
+                            <option value="300">Half Plate (৳300)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳280</span>
-                        <button class="btn-cart" onclick="addToCart('Spicy Beef Bhuna')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="550">৳550</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Chittagong Kala Bhuna')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card bangladeshi">
-                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=400" alt="Mint Mojito">
+                <img src="https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&q=80&w=400" alt="Beef Tehari">
                 <div class="product-card-body">
-                    <h3>Signature Mint Mojito</h3>
-                    <p>Refreshing blend of fresh mint leaves, lime juice, and sparkling soda.</p>
+                    <h3>Old Dhaka Beef Tehari</h3>
+                    <p>Mustard oil cooked chinigura rice with small tender beef pieces.</p>
                     <div class="product-dropdown-control">
-                        <label>Serving Size:</label>
-                        <span style="font-size: 13px; color: #555; font-weight:600;">Normal Glass</span>
+                        <label>Portion:</label>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="320">Full Plate (৳320)</option>
+                            <option value="180">Half Plate (৳180)</option>
+                        </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price">৳120</span>
-                        <button class="btn-cart" onclick="addToCart('Signature Mint Mojito')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="320">৳320</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Old Dhaka Beef Tehari')">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item-card bangladeshi">
+                <span class="badge-popular"><i class="fa-solid fa-fire"></i> Must Try</span>
+                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=400" alt="Shorshe Ilish">
+                <div class="product-card-body">
+                    <h3>Shorshe Ilish (Hilsa)</h3>
+                    <p>National fish cooked in a rich, pungent mustard seed gravy.</p>
+                    <div class="product-dropdown-control">
+                        <label>Pieces:</label>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="480">2 Pieces (৳480)</option>
+                            <option value="250">1 Piece (৳250)</option>
+                        </select>
+                    </div>
+                    <div class="product-price-action">
+                        <span class="product-base-price dynamic-render-price" data-base-price="480">৳480</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Shorshe Ilish')">Add</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="product-item-card bangladeshi">
+                <img src="https://images.unsplash.com/photo-1631452180519-c014fe946cea?auto=format&fit=crop&q=80&w=400" alt="Fuchka">
+                <div class="product-card-body">
+                    <h3>Special Fuchka Platter</h3>
+                    <p>Crispy hollow puris filled with spicy potato & tamarind water.</p>
+                    <div class="product-dropdown-control">
+                        <label>Portion:</label>
+                        <span style="font-size: 13px; font-weight:600;">10 Pcs/Plate</span>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)" style="display:none;">
+                            <option value="100">10 Pcs</option>
+                        </select>
+                    </div>
+                    <div class="product-price-action">
+                        <span class="product-base-price dynamic-render-price" data-base-price="100">৳100</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Fuchka Platter')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card grill">
+                <span class="badge-popular">Top Grill</span>
                 <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" alt="Beef Tikka">
                 <div class="product-card-body">
-                    <h3>Beef Tikka Platter</h3>
+                    <h3>Beef Kabab Platter</h3>
                     <p>Spiced beef skewers, grilled onions, extra special spice blend.</p>
                     <div class="product-dropdown-control">
                         <label>Portion:</label>
-                        <select onchange="updatePlatePricing(this, 300, 550)">
-                            <option value="full">Full Plate</option>
-                            <option value="half">Half Plate</option>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="550">Full Plate (৳550)</option>
+                            <option value="300">Half Plate (৳300)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳550</span>
-                        <button class="btn-cart" onclick="addToCart('Beef Tikka Platter')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="550">৳550</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Beef Kabab Platter')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card desserts">
-                <img src="https://images.unsplash.com/photo-1599785209707-a456fc1337bb?auto=format&fit=crop&q=80&w=400" alt="Golap Jam">
+                <img src="https://images.unsplash.com/photo-1557494498-8e65389cb4f4?auto=format&fit=crop&q=80&w=400" alt="Golap Jam">
                 <div class="product-card-body">
-                    <h3>Golap Jam</h3>
+                    <h3>Premium Golap Jam</h3>
                     <p>Soft, juicy, deep-fried milk balls dipped in sugar syrup.</p>
                     <div class="product-dropdown-control">
                         <label>Weight:</label>
-                        <select onchange="updateSweetPricing(this, 150, 300, 600)">
-                            <option value="250">250 gm</option>
-                            <option value="500">500 gm</option>
-                            <option value="1000">1 kg</option>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="150">250 gm (৳150)</option>
+                            <option value="300">500 gm (৳300)</option>
+                            <option value="600">1 kg (৳600)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳150</span>
-                        <button class="btn-cart" onclick="addToCart('Golap Jam')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="150">৳150</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Golap Jam')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card desserts">
-                <img src="https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=400" alt="Kalo Jam">
+                <img src="https://images.unsplash.com/photo-1605807646983-377bc5a76493?auto=format&fit=crop&q=80&w=400" alt="Kalo Jam">
                 <div class="product-card-body">
                     <h3>Kalo Jam</h3>
-                    <p>Delicious dark fried paneer/khoya treats infused with cardamom.</p>
+                    <p>Delicious dark fried sweets infused with cardamom.</p>
                     <div class="product-dropdown-control">
                         <label>Weight:</label>
-                        <select onchange="updateSweetPricing(this, 160, 320, 640)">
-                            <option value="250">250 gm</option>
-                            <option value="500">500 gm</option>
-                            <option value="1000">1 kg</option>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="160">250 gm (৳160)</option>
+                            <option value="320">500 gm (৳320)</option>
+                            <option value="640">1 kg (৳640)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳160</span>
-                        <button class="btn-cart" onclick="addToCart('Kalo Jam')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="160">৳160</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Kalo Jam')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card desserts">
-                <img src="https://images.unsplash.com/photo-1605197136124-b1eb211d14e0?auto=format&fit=crop&q=80&w=400" alt="Sondesh">
+                <span class="badge-popular">Bestseller</span>
+                <img src="https://images.unsplash.com/photo-1506084868230-bb9d95c24759?auto=format&fit=crop&q=80&w=400" alt="Sondesh">
                 <div class="product-card-body">
-                    <h3>Sondesh</h3>
+                    <h3>Special Sondesh</h3>
                     <p>Exquisite milk-based sweet made from fresh chhena and saffron.</p>
                     <div class="product-dropdown-control">
                         <label>Weight:</label>
-                        <select onchange="updateSweetPricing(this, 200, 400, 800)">
-                            <option value="250">250 gm</option>
-                            <option value="500">500 gm</option>
-                            <option value="1000">1 kg</option>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="200">250 gm (৳200)</option>
+                            <option value="400">500 gm (৳400)</option>
+                            <option value="800">1 kg (৳800)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳200</span>
-                        <button class="btn-cart" onclick="addToCart('Sondesh')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="200">৳200</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Sondesh')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card desserts">
-                <img src="https://images.unsplash.com/photo-1668612948625-f3ea8da8fc63?auto=format&fit=crop&q=80&w=400" alt="Roshogolla">
+                <img src="https://images.unsplash.com/photo-1582716401301-b2407dc7563d?auto=format&fit=crop&q=80&w=400" alt="Roshogolla">
                 <div class="product-card-body">
-                    <h3>Roshogolla</h3>
+                    <h3>Spongy Roshogolla</h3>
                     <p>Light, sweet, circular cottage cheese dumplings boiled in syrup.</p>
                     <div class="product-dropdown-control">
                         <label>Weight:</label>
-                        <select onchange="updateSweetPricing(this, 100, 200, 400)">
-                            <option value="250">250 gm</option>
-                            <option value="500">500 gm</option>
-                            <option value="1000">1 kg</option>
+                        <select class="variant-select" onchange="updateDynamicPricing(this)">
+                            <option value="100">250 gm (৳100)</option>
+                            <option value="200">500 gm (৳200)</option>
+                            <option value="400">1 kg (৳400)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
-                        <span class="product-base-price dynamic-render-price">৳100</span>
-                        <button class="btn-cart" onclick="addToCart('Roshogolla')"><i class="fa-solid fa-cart-plus"></i> Add</button>
+                        <span class="product-base-price dynamic-render-price" data-base-price="100">৳100</span>
+                        <div class="cart-action-group">
+                            <div class="qty-selector">
+                                <button class="qty-btn" onclick="updateQty(this, -1)">-</button>
+                                <input type="text" class="qty-input" value="1" readonly>
+                                <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
+                            </div>
+                            <button class="btn-cart" onclick="addToCart(this, 'Roshogolla')">Add</button>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-        <button class="btn-primary space-block-center" onclick="openBooking()">View Full Menu & Book</button>
-    </section>
-
-    <section id="contact" class="image-clone-contact-section">
-        <h2>Contact & Support</h2>
-        <p class="contact-subhead-text">Have questions or special event requests? Reach out to us directly.</p>
-        
-        <div class="contact-dual-cards-wrapper">
-            <div class="support-item-box">
-                <div class="icon-frame"><i class="fa-solid fa-phone"></i></div>
-                <h3>Call / WhatsApp</h3>
-                <p class="display-clickable-info">+880 1998-453990</p>
-            </div>
-            <div class="support-item-box">
-                <div class="icon-frame"><i class="fa-solid fa-envelope"></i></div>
-                <h3>Email Us</h3>
-                <p class="display-clickable-info">info@veesrestaurant.com</p>
-            </div>
-        </div>
-
-        <div class="legal-system-footer">
-            <p>© 2026 Vee's Restaurant. All Rights Reserved.</p>
-            <p class="brand-proprietor-signature">Proprietor: <strong>Md. Emtiaz Hossain Sami</strong></p>
+            
         </div>
     </section>
+
+    <div style="text-align: center; margin-top: 20px; margin-bottom: 40px;">
+        <button class="btn-primary" style="padding: 12px 30px; font-size: 15px;">View Full Menu & Book</button>
+    </div>
+
+    <section id="contact" style="padding: 0 8% 40px;">
+        <div class="section-title-block" style="margin-bottom: 30px;">
+            <h2 style="color: var(--brand-orange-accent); font-size: 28px;">Contact & Support</h2>
+            <p style="color: var(--slate-muted); font-size: 14px; margin-top: 8px;">Have questions or special event requests? Reach out to us directly.</p>
+        </div>
+
+        <div class="contact-cards-container">
+            <div class="contact-card">
+                <i class="fa-solid fa-phone"></i>
+                <h4>Call / WhatsApp</h4>
+                <p class="contact-highlight">+880 1998-453990</p>
+            </div>
+            
+            <div class="contact-card">
+                <i class="fa-solid fa-envelope"></i>
+                <h4>Email Us</h4>
+                <p>info@veesrestaurant.com</p>
+            </div>
+        </div>
+
+        <div class="footer-bottom-bar">
+            <p>&copy; 2026 Vee's Restaurant. All Rights Reserved.</p>
+            <p>Proprietor: <strong>Md. Emtiaz Hossain Sami</strong></p>
+        </div>
+    </section>
+
+    <div id="toast-notification"></div>
+
+    <div id="bookingModal" class="system-modal-backdrop">
+        <div class="modal-card-container">
+            <span class="modal-dismiss-trigger" onclick="closeBooking()">&times;</span>
+            <div class="core-text-center">
+                <h2>Book a Table</h2>
+                <p style="margin-bottom: 20px; color: #666;">Reserve your spot quickly!</p>
+                <button class="btn-primary" onclick="closeBooking()">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
