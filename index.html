@@ -10,7 +10,7 @@
 <body>
 
     <div class="promo-discount-bar">
-        Enjoy 20% off on all authentic dishes this weekend! Use code: DHAKA20
+        Enjoy 20% off on all authentic Bangladeshi dishes this weekend! Use code: DHAKA20
     </div>
 
     <header>
@@ -25,7 +25,51 @@
         <button class="btn-reserve" onclick="openBooking()">Reserve Table</button>
     </header>
 
-    <section id="menu" style="padding-top: 40px;">
+    <section id="home" class="hero-viewport" style="padding: 0;">
+        <div class="hero-overlay-content">
+            <h1>Vee's Restaurant</h1>
+            <p>Exquisite flavors, warm hospitality in the heart of Dhaka's culinary scene. Authentic Bangladeshi warmth and global flair.</p>
+            <div class="hero-action-btns">
+                <button class="btn-primary" onclick="window.location.href='#menu'">Explore Menu</button>
+                <button class="btn-secondary" onclick="openBooking()">Reserve Table</button>
+            </div>
+        </div>
+    </section>
+
+    <section id="about" class="about-story-section">
+        <div class="section-title-block">
+            <h2>Our Story & Leadership</h2>
+            <p>Where premium culinary vision meets authentic warmth and global flair.</p>
+        </div>
+
+        <div class="chefs-flex-row">
+            
+            <div class="chef-profile-card owner-highlight">
+                <div class="profile-image-wrapper">
+                    <img id="owner-profile-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300" alt="Md. Emtiaz Hossain Sami">
+                    <label for="owner-upload-input" class="image-upload-overlay" title="Upload Your Custom Photo">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Change</span>
+                    </label>
+                    <input type="file" id="owner-upload-input" accept="image/*" onchange="previewOwnerImage(this)">
+                </div>
+                <h3>Md. Emtiaz Hossain Sami</h3>
+                <p class="chef-role-tag">Owner & Founder</p>
+                <p class="chef-biography">Visionary entrepreneur dedicated to bringing premium global dining experiences, rich heritage blends, and authentic traditional cuisines under one elite platform.</p>
+            </div>
+
+            <div class="chef-profile-card">
+                <div class="profile-image-wrapper normal-chef-border">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=300" alt="Chef Vera">
+                </div>
+                <h3>Chef Vera Okonkwo</h3>
+                <p class="chef-role-tag">Executive Chef</p>
+                <p class="chef-biography">With over 12 years of experience in fine dining. Crafts menus that tell unique stories of heritage with international sophistication.</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="menu">
         <div class="section-title-block">
             <h4 class="sub-heading-accent">Our Signature Menu</h4>
             <h2>From timeless classics to modern twists</h2>
@@ -62,7 +106,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Ruti/Paratha')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Ruti / Paratha')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -73,7 +117,7 @@
                 <img src="https://images.unsplash.com/photo-1546549032-9571cd6b27df?auto=format&fit=crop&q=80&w=400" alt="Daal">
                 <div class="product-card-body">
                     <h3>Special Bhuna Daal</h3>
-                    <p>Thick, spicy lentil soup cooked with garlic and herbs.</p>
+                    <p>Thick, spicy lentil soup cooked with garlic and aromatic herbs.</p>
                     <div class="product-dropdown-control">
                         <label>Portion:</label>
                         <select class="variant-select" onchange="updateDynamicPricing(this)">
@@ -88,22 +132,22 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Bhuna Daal')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Special Bhuna Daal')">Add</button>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="product-item-card breakfast">
-                <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=400" alt="Dim">
+                <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=400" alt="Egg">
                 <div class="product-card-body">
                     <h3>Farm Fresh Egg (Dim)</h3>
-                    <p>Omelette or sunny-side-up fried to perfection.</p>
+                    <p>Omelette or sunny-side-up fried with fresh green chillies.</p>
                     <div class="product-dropdown-control">
                         <label>Style:</label>
                         <select class="variant-select" onchange="updateDynamicPricing(this)">
                             <option value="30">Omelette (৳30)</option>
-                            <option value="30">Poached (৳30)</option>
+                            <option value="30">Fried / Poached (৳30)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
@@ -114,7 +158,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Egg (Dim)')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Farm Fresh Egg')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -124,7 +168,7 @@
                 <img src="https://images.unsplash.com/photo-1547592166-23ac45744acd?auto=format&fit=crop&q=80&w=400" alt="Soup">
                 <div class="product-card-body">
                     <h3>Thai Clear/Corn Soup</h3>
-                    <p>Warm, soothing soup to start your day or evening right.</p>
+                    <p>Warm, soothing appetizer packed with premium shredded chicken.</p>
                     <div class="product-dropdown-control">
                         <label>Portion:</label>
                         <select class="variant-select" onchange="updateDynamicPricing(this)">
@@ -140,7 +184,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Soup')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Thai Soup')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -151,7 +195,7 @@
                 <img src="https://images.unsplash.com/photo-1550155743-34e12a4d31eb?auto=format&fit=crop&q=80&w=400" alt="Khichuri">
                 <div class="product-card-body">
                     <h3>Beef Bhuna Khichuri</h3>
-                    <p>Roasted lentil rice mixed with tender, spicy beef chunks.</p>
+                    <p>Roasted lentil rice mixed with tender, deeply spiced beef chunks.</p>
                     <div class="product-dropdown-control">
                         <label>Portion:</label>
                         <select class="variant-select" onchange="updateDynamicPricing(this)">
@@ -167,7 +211,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Beef Khichuri')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Beef Bhuna Khichuri')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -221,7 +265,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Kala Bhuna')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Chittagong Kala Bhuna')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -247,7 +291,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Beef Tehari')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Old Dhaka Beef Tehari')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -300,7 +344,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Beef Burger')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Gourmet Beef Burger')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -308,7 +352,7 @@
 
             <div class="product-item-card desserts">
                 <span class="badge-popular badge-bestseller">Must Try</span>
-                <img src="https://images.unsplash.com/photo-1596803244618-8dbee441d70b?auto=format&fit=crop&q=80&w=400" alt="Gulab Jamun">
+                <img src="https://images.unsplash.com/photo-1596803244618-8dbee441d70b?auto=format&fit=crop&q=80&w=400" alt="Golap Jam">
                 <div class="product-card-body">
                     <h3>Premium Golap Jam</h3>
                     <p>Soft, juicy, deep-fried milk balls dipped in sweet sugar syrup.</p>
@@ -328,7 +372,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Golap Jam')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Premium Golap Jam')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -355,7 +399,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Roshogolla')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Spongy Roshogolla')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -365,7 +409,7 @@
                 <img src="https://images.unsplash.com/photo-1578985545062-69928b1ea383?auto=format&fit=crop&q=80&w=400" alt="Chocolate Cake">
                 <div class="product-card-body">
                     <h3>Dark Chocolate Cake</h3>
-                    <p>Rich, moist chocolate cake layers with velvety buttercream.</p>
+                    <p>Rich, moist chocolate cake layers with velvety chocolate frosting.</p>
                     <div class="product-dropdown-control">
                         <label>Size:</label>
                         <select class="variant-select" onchange="updateDynamicPricing(this)">
@@ -381,7 +425,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Chocolate Cake')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Dark Chocolate Cake')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -392,7 +436,7 @@
                 <img src="https://images.unsplash.com/photo-1575505586569-646b2ca898fc?auto=format&fit=crop&q=80&w=400" alt="Borhani">
                 <div class="product-card-body">
                     <h3>Traditional Borhani</h3>
-                    <p>Spicy, tangy yogurt drink. Perfect ending to a heavy meal.</p>
+                    <p>Spicy, tangy yogurt drink infused with custom roasted spices.</p>
                     <div class="product-dropdown-control">
                         <label>Size:</label>
                         <select class="variant-select" onchange="updateDynamicPricing(this)">
@@ -408,7 +452,7 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Borhani')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Traditional Borhani')">Add</button>
                         </div>
                     </div>
                 </div>
@@ -418,11 +462,11 @@
                 <img src="https://images.unsplash.com/photo-1551538827-9c037cb4f32a?auto=format&fit=crop&q=80&w=400" alt="Mint Mojito">
                 <div class="product-card-body">
                     <h3>Fresh Mint Mojito</h3>
-                    <p>Refreshing virgin mojito with crushed mint and fresh lime.</p>
+                    <p>Refreshing virgin mojito blended with crushed mint and fresh lime.</p>
                     <div class="product-dropdown-control">
                         <label>Size:</label>
                         <select class="variant-select" onchange="updateDynamicPricing(this)">
-                            <option value="120">Regular (৳120)</option>
+                            <option value="120">Regular Glass (৳120)</option>
                         </select>
                     </div>
                     <div class="product-price-action">
@@ -433,16 +477,16 @@
                                 <input type="text" class="qty-input" value="1" readonly>
                                 <button class="qty-btn" onclick="updateQty(this, 1)">+</button>
                             </div>
-                            <button class="btn-cart" onclick="addToCart(this, 'Mint Mojito')">Add</button>
+                            <button class="btn-cart" onclick="addToCart(this, 'Fresh Mint Mojito')">Add</button>
                         </div>
                     </div>
                 </div>
             </div>
-
+            
         </div>
     </section>
 
-    <section id="contact" style="padding: 0 8% 40px; background: var(--canvas-cream-bg);">
+    <section id="contact" style="padding: 0 8% 40px;">
         <div class="section-title-block" style="margin-bottom: 30px;">
             <h2 style="color: var(--brand-orange-accent); font-size: 28px;">Contact & Support</h2>
             <p style="color: var(--slate-muted); font-size: 14px; margin-top: 8px;">Have questions or special event requests? Reach out to us directly.</p>
@@ -454,6 +498,7 @@
                 <h4>Call / WhatsApp</h4>
                 <p class="contact-highlight">+880 1998-453990</p>
             </div>
+            
             <div class="contact-card">
                 <i class="fa-solid fa-envelope"></i>
                 <h4>Email Us</h4>
@@ -467,13 +512,13 @@
         </div>
     </section>
 
-    <div id="floating-cart" class="floating-cart hidden" onclick="alert('Proceeding to Checkout!')">
+    <div id="floating-cart" class="floating-cart hidden" onclick="alert('Proceeding to Checkout with your basket items!')">
         <div class="cart-left">
             <div class="cart-icon-wrapper">
-                <i class="fa-solid fa-cart-shopping"></i>
+                <i class="fa-solid fa-basket-shopping"></i>
                 <span id="cart-item-count">0</span>
             </div>
-            <span class="cart-view-text">View your cart</span>
+            <span class="cart-view-text">View your basket</span>
         </div>
         <div class="cart-right">
             <span id="cart-total-price">৳0</span>
@@ -481,6 +526,17 @@
     </div>
 
     <div id="toast-notification"></div>
+
+    <div id="bookingModal" class="system-modal-backdrop">
+        <div class="modal-card-container">
+            <span class="modal-dismiss-trigger" onclick="closeBooking()">&times;</span>
+            <div class="core-text-center">
+                <h2>Book a Table</h2>
+                <p style="margin-bottom: 20px; color: #666;">Reserve your spot quickly!</p>
+                <button class="btn-primary" onclick="closeBooking()">Confirm Booking</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
