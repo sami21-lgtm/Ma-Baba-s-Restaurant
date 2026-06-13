@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ma-Baba's Restaurant | Premium Dining</title>
+    <!-- Font Awesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Promo Bar -->
     <div class="promo-discount-bar">
         Enjoy 20% off on all authentic Bangladeshi dishes this weekend! Use code: DHAKA20
     </div>
 
+    <!-- Header -->
     <header>
         <div class="logo">Ma-Baba's Restaurant</div>
         <nav>
@@ -23,9 +26,10 @@
         <button class="btn-reserve" onclick="openBooking()">Reserve Table</button>
     </header>
 
+    <!-- Hero Section -->
     <section id="home" class="hero-viewport">
         <div class="hero-overlay-content">
-            <h1>Ma-Baba-s Restaurant</h1>
+            <h1>Vee's Restaurant</h1>
             <p>Exquisite flavors, warm hospitality in the heart of Dhaka's culinary scene. Authentic Bangladeshi warmth and global flair.</p>
             <div class="hero-action-btns">
                 <button class="btn-primary" onclick="window.location.href='#menu'">Explore Menu</button>
@@ -34,26 +38,24 @@
         </div>
     </section>
 
+    <!-- About Section -->
     <section id="about" class="about-story-section">
         <div class="section-title-block">
             <h2>Our Story & Leadership</h2>
             <p>Where premium culinary vision meets authentic warmth and global flair.</p>
         </div>
         <div class="chefs-flex-row">
+            <!-- Owner Info Card (Camera upload overlay option removed based on image_fa2fe4.png) -->
             <div class="chef-profile-card owner-highlight">
-                <div class="profile-image-wrapper">
-                    <img id="owner-profile-img" src="Md. EmTIAZ hOSSAIN sAMI LOGO.png" alt="Md. Emtiaz Hossain Sami" onerror="this.src='https://via.placeholder.com/300?text=Owner+Logo'">
-                    <label for="owner-upload-input" class="image-upload-overlay" title="Upload Your Custom Photo">
-                        <i class="fa-solid fa-camera"></i>
-                        <span>Change</span>
-                    </label>
-                    <input type="file" id="owner-upload-input" accept="image/*" onchange="previewOwnerImage(this)">
+                <div class="profile-image-wrapper plain-profile-border">
+                    <img src="Md. EmTIAZ hOSSAIN sAMI LOGO.png" alt="Md. Emtiaz Hossain Sami" onerror="this.src='https://via.placeholder.com/300?text=Owner+Logo'">
                 </div>
                 <h3>Md. Emtiaz Hossain Sami</h3>
                 <p class="chef-role-tag">Owner & Founder</p>
                 <p class="chef-biography">Visionary entrepreneur dedicated to bringing premium global dining experiences, rich heritage blends, and authentic traditional cuisines under one elite platform.</p>
             </div>
 
+            <!-- Executive Chef Card -->
             <div class="chef-profile-card">
                 <div class="profile-image-wrapper normal-chef-border">
                     <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=300" alt="Chef Vera">
@@ -65,12 +67,14 @@
         </div>
     </section>
 
+    <!-- Menu Section -->
     <section id="menu">
         <div class="section-title-block">
             <h4 class="sub-heading-accent">Our Signature Menu</h4>
             <h2>From timeless classics to modern twists</h2>
         </div>
 
+        <!-- Category Filters -->
         <div class="menu-filter-bar">
             <button class="filter-tab-btn active" onclick="filterMenu('all')">All Items</button>
             <button class="filter-tab-btn" onclick="filterMenu('breakfast')">Breakfast</button>
@@ -81,6 +85,7 @@
         </div>
 
         <div class="menu-products-container">
+            <!-- 1. Soft Ruti / Paratha -->
             <div class="product-item-card breakfast">
                 <img src="images (12).jpg" alt="Soft Ruti / Paratha" onerror="this.src='https://via.placeholder.com/400x250?text=Ruti+Paratha'">
                 <div class="product-card-body">
@@ -107,6 +112,7 @@
                 </div>
             </div>
 
+            <!-- 2. Special Bhuna Daal -->
             <div class="product-item-card breakfast">
                 <span class="badge-popular">Morning Special</span>
                 <img src="images (13).jpg" alt="Special Bhuna Daal" onerror="this.src='https://via.placeholder.com/400x250?text=Bhuna+Daal'">
@@ -133,6 +139,7 @@
                 </div>
             </div>
 
+            <!-- 3. Farm Fresh Egg -->
             <div class="product-item-card breakfast">
                 <img src="https://images.unsplash.com/photo-1525351484163-7529414344d8?auto=format&fit=crop&q=80&w=400" alt="Egg">
                 <div class="product-card-body">
@@ -159,6 +166,7 @@
                 </div>
             </div>
 
+            <!-- 4. Beef Bhuna Khichuri -->
             <div class="product-item-card breakfast lunch">
                 <span class="badge-popular badge-bestseller">Heavy Breakfast</span>
                 <img src="e338491b-063e-4228-ac0e-3ca9c73536a8.png" alt="Khichuri" onerror="this.src='https://via.placeholder.com/400x250?text=Beef+Khichuri'">
@@ -186,6 +194,7 @@
                 </div>
             </div>
 
+            <!-- 5. Premium Mutton Kacchi -->
             <div class="product-item-card lunch">
                 <span class="badge-popular badge-bestseller"><i class="fa-solid fa-star"></i> Bestseller</span>
                 <img src="images (14).jpg" alt="Mutton Kacchi" onerror="this.src='https://via.placeholder.com/400x250?text=Mutton+Kacchi'">
@@ -213,6 +222,7 @@
                 </div>
             </div>
 
+            <!-- 6. Chittagong Kala Bhuna -->
             <div class="product-item-card lunch dinner">
                 <span class="badge-popular">Popular</span>
                 <img src="4a1cb3da-4300-4954-b526-8ac5f40146f1.png" alt="Kala Bhuna" onerror="this.src='https://via.placeholder.com/400x250?text=Kala+Bhuna'">
@@ -240,6 +250,7 @@
                 </div>
             </div>
 
+            <!-- 7. Old Dhaka Beef Tehari -->
             <div class="product-item-card lunch">
                 <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=400" alt="Beef Tehari">
                 <div class="product-card-body">
@@ -266,6 +277,7 @@
                 </div>
             </div>
 
+            <!-- 8. Premium Golap Jam -->
             <div class="product-item-card desserts">
                 <span class="badge-popular badge-bestseller">Must Try</span>
                 <img src="0ddd6c12-16ec-45c4-b487-b80951e661d3.png" alt="Golap Jam" onerror="this.src='https://via.placeholder.com/400x250?text=Golap+Jam'">
@@ -293,6 +305,7 @@
                 </div>
             </div>
 
+            <!-- 9. Traditional Kalo Jam -->
             <div class="product-item-card desserts">
                 <img src="5c9a67e3-cf74-4c1d-8284-d8286d70bffe.png" alt="Kalo Jam" onerror="this.src='https://via.placeholder.com/400x250?text=Kalo+Jam'">
                 <div class="product-card-body">
@@ -319,6 +332,7 @@
                 </div>
             </div>
 
+            <!-- 10. Spongy Roshogolla -->
             <div class="product-item-card desserts">
                 <img src="32592ad6-fe80-41e8-a7a3-872e94c0bc1c.png" alt="Roshogolla" onerror="this.src='https://via.placeholder.com/400x250?text=Roshogolla'">
                 <div class="product-card-body">
@@ -345,6 +359,7 @@
                 </div>
             </div>
 
+            <!-- 11. Premium Sondesh -->
             <div class="product-item-card desserts">
                 <img src="74221d1f-efce-452f-8731-e368a05f2e5b.png" alt="Sondesh" onerror="this.src='https://via.placeholder.com/400x250?text=Sondesh'">
                 <div class="product-card-body">
@@ -371,6 +386,7 @@
                 </div>
             </div>
 
+            <!-- 12. Dark Chocolate Cake -->
             <div class="product-item-card desserts">
                 <img src="https://images.unsplash.com/photo-1578985545062-69928b1d9587?auto=format&fit=crop&q=80&w=400" alt="Chocolate Cake">
                 <div class="product-card-body">
@@ -397,6 +413,7 @@
                 </div>
             </div>
 
+            <!-- 13. Premium Sponge Cake -->
             <div class="product-item-card desserts">
                 <img src="0f144ebe-252c-474d-b4fd-5b2fb102b76b.png" alt="Sponge Cake" onerror="this.src='https://via.placeholder.com/400x250?text=Sponge+Cake'">
                 <div class="product-card-body">
@@ -423,6 +440,7 @@
                 </div>
             </div>
 
+            <!-- 14. Vanilla Bean Cake -->
             <div class="product-item-card desserts">
                 <img src="efbacffe-7036-4fd0-beb4-43eafe0c7e00.png" alt="Vanilla Cake" onerror="this.src='https://via.placeholder.com/400x250?text=Vanilla+Cake'">
                 <div class="product-card-body">
@@ -449,6 +467,7 @@
                 </div>
             </div>
 
+            <!-- 15. Traditional Borhani -->
             <div class="product-item-card drinks lunch dinner">
                 <span class="badge-popular">Digestive</span>
                 <img src="images (11).jpg" alt="Borhani" onerror="this.src='https://via.placeholder.com/400x250?text=Borhani'">
@@ -476,6 +495,7 @@
                 </div>
             </div>
 
+            <!-- 16. Coca-Cola -->
             <div class="product-item-card drinks">
                 <img src="coca-cola.jpg" alt="Coca-Cola" onerror="this.src='https://images.unsplash.com/photo-1622483767028-3f66f32aef97?auto=format&fit=crop&q=80&w=400'">
                 <div class="product-card-body">
@@ -505,6 +525,7 @@
                 </div>
             </div>
 
+            <!-- 17. 7up -->
             <div class="product-item-card drinks">
                 <img src="7up.jpg" alt="7up" onerror="this.src='https://images.unsplash.com/photo-1625772299847-2c5348639a98?auto=format&fit=crop&q=80&w=400'">
                 <div class="product-card-body">
@@ -534,6 +555,7 @@
                 </div>
             </div>
 
+            <!-- 18. Mojo -->
             <div class="product-item-card drinks">
                 <img src="mojo.jpg" alt="Mojo" onerror="this.src='https://images.unsplash.com/photo-1554866585-cd94860890b7?auto=format&fit=crop&q=80&w=400'">
                 <div class="product-card-body">
@@ -565,6 +587,7 @@
         </div>
     </section>
 
+    <!-- Floating Basket Button Look -->
     <div id="floating-cart" class="floating-basket-bar hidden" onclick="toggleCheckoutModal(true)">
         <div class="cart-left">
             <div class="cart-icon-wrapper">
@@ -577,33 +600,8 @@
             <span id="cart-total-price"> ৳ 0</span>
         </div>
     </div>
-    <!-- Contact & Footer Section -->
-    <section id="contact" style="padding: 0 8% 40px;">
-        <div class="section-title-block" style="margin-bottom: 30px;">
-            <h2 style="color: var(--brand-orange-accent); font-size: 28px;">Contact & Support</h2>
-            <p style="color: var(--slate-muted); font-size: 14px; margin-top: 8px;">Have questions or special event requests? Reach out to us directly.</p>
-        </div>
 
-        <div class="contact-cards-container">
-            <div class="contact-card">
-                <i class="fa-solid fa-phone"></i>
-                <h4>Call / WhatsApp</h4>
-                <p class="contact-highlight">+880 1998-453990</p>
-            </div>
-            <div class="contact-card">
-                <i class="fa-solid fa-envelope"></i>
-                <h4>Email Us</h4>
-                <p>info@veesrestaurant.com</p>
-            </div>
-        </div>
-
-        <div class="footer-bottom-bar">
-            <p>&copy; 2026 Vee's Restaurant. All Rights Reserved.</p>
-            <p>Proprietor: <strong>Md. Emtiaz Hossain Sami</strong></p>
-        </div>
-    </section>
-
-
+    <!-- Checkout Modal Framework -->
     <div id="checkoutModal" class="system-modal-backdrop">
         <div class="modal-card-container">
             <span class="modal-dismiss-trigger" onclick="toggleCheckoutModal(false)">&times;</span>
@@ -612,13 +610,15 @@
             
             <div class="checkout-summary-box">
                 <div id="checkout-items-list">
-                    </div>
+                    <!-- Javascript generates rows here dynamically -->
+                </div>
                 <div class="summary-total-row">
                     <span>Grand Total:</span>
                     <span id="summary-total-val" style="color: #d70f64; font-weight: 800;"> ৳ 0</span>
                 </div>
             </div>
 
+            <!-- Contact Shipping Form -->
             <form id="orderCheckoutForm" onsubmit="handleOrderSubmission(event)">
                 <div class="input-form-field">
                     <label>Full Name *</label>
@@ -644,6 +644,7 @@
         </div>
     </div>
 
+    <!-- Booking Modal Backdrop -->
     <div id="bookingModal" class="system-modal-backdrop">
         <div class="modal-card-container">
             <span class="modal-dismiss-trigger" onclick="closeBooking()">&times;</span>
@@ -655,6 +656,38 @@
         </div>
     </div>
 
+    <!-- Attractive Styled Centered Footer (Based on image_fa2f7f.png) -->
+    <footer id="contact" class="premium-centered-footer">
+        <div class="footer-grid-container">
+            <!-- Contact Box 1: Call/WhatsApp -->
+            <div class="footer-contact-card">
+                <div class="footer-icon-circle">
+                    <i class="fa-solid fa-phone"></i>
+                </div>
+                <h4>Call / WhatsApp</h4>
+                <p class="footer-highlight-text">+880 1998-453990</p>
+            </div>
+
+            <!-- Contact Box 2: Email -->
+            <div class="footer-contact-card">
+                <div class="footer-icon-circle">
+                    <i class="fa-solid fa-envelope"></i>
+                </div>
+                <h4>Email Us</h4>
+                <p class="footer-highlight-text">info@veesrestaurant.com</p>
+            </div>
+        </div>
+
+        <div class="footer-divider-line"></div>
+
+        <!-- Copyright & Ownership Info Info Structure -->
+        <div class="footer-copyright-block">
+            <p class="copyright-text">&copy; 2026 Vee's Restaurant. All Rights Reserved.</p>
+            <p class="proprietor-tag">Proprietor: <span>Md. Emtiaz Hossain Sami</span></p>
+        </div>
+    </footer>
+
+    <!-- Toast Notification Tray -->
     <div id="toast-notification"></div>
 
     <script src="script.js"></script>
