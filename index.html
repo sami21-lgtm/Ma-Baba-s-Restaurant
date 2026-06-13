@@ -3,691 +3,417 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Vee's Restaurant | Modern Dining</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Vee's Restaurant | Premium Management Platform</title>
+    <!-- FontAwesome for Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
+    <!-- Top Promo Discount Bar -->
+    <div class="promo-discount-bar">
+        <p><i class="fa-solid fa-tag"></i> Celebrate the Season! Enjoy a flat <strong>15% DISCOUNT</strong> on all premium booth reservations today.</p>
+    </div>
+
+    <!-- Header Navbar -->
     <header>
-        <nav class="navbar">
-            <div class="logo">Vee's Restaurant</div>
-            <ul class="nav-links">
-                <li><a href="#home" class="active">Home</a></li>
-                <li><a href="#offers">Offers</a></li>
-                <li><a href="#menu">Signature Menu</a></li>
-                <li><a href="#reservation">Reservation</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-            <a href="#reservation" class="btn-reserve">Reserve Table</a>
+        <div class="logo">Vee's Restaurant</div>
+        <nav>
+            <a href="#home">Home</a>
+            <a href="#about">About</a>
+            <a href="#menu">Signature Menu</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
         </nav>
+        <button class="btn-reserve" onclick="openBooking()">Reserve Table</button>
     </header>
 
-    <section id="home" class="hero-section">
-        <div class="hero-content">
-            <h1>Welcome to Vee's Restaurant</h1>
-            <p>Exquisite flavors, warm hospitality — the heart of culinary excellence. Experience authentic local & international cuisine curated by our founder.</p>
-            <div class="hero-btns">
-                <a href="#menu" class="btn-primary">Explore Menu <i class="fas fa-arrow-right"></i></a>
-                <a href="#reservation" class="btn-secondary">Book a Table</a>
-            </div>
-            <div class="hero-meta">
-                <span><i class="fas fa-map-marker-alt"></i> Dhaka, Bangladesh</span>
-                <span><i class="fas fa-phone"></i> +8801998453990</span>
+    <!-- Hero Section -->
+    <section id="home" class="hero-viewport">
+        <div class="hero-overlay-content">
+            <h1>Vee's Restaurant</h1>
+            <p>Exquisite flavors, warm hospitality in the heart of Abuja's culinary scene. Authentic African warmth and global flair.</p>
+            <div class="hero-action-btns">
+                <button class="btn-primary" onclick="document.getElementById('menu').scrollIntoView();">Explore Menu</button>
+                <button class="btn-secondary" onclick="openBooking()">Book a Table</button>
             </div>
         </div>
     </section>
 
-    <section id="offers" class="offers-section">
-        <div class="section-title">
-            <h2>Special Offers & Combos</h2>
-            <p>Exclusive deals for premium dining experience.</p>
-        </div>
-        <div class="offers-cards-grid">
-            <div class="offer-card glass-card">
-                <i class="fas fa-percent offer-icon"></i>
-                <div class="offer-content">
-                    <h3>20% OFF</h3>
-                    <p>On all local Bengali dishes on Weekdays (Mon-Thu).</p>
-                    <span class="offer-code">CODE: BENGAL20</span>
-                </div>
-            </div>
-            <div class="offer-card glass-card highlighted-offer">
-                <i class="fas fa-crown offer-icon"></i>
-                <div class="offer-content">
-                    <h3>ROYAL COMBO</h3>
-                    <p>Ribeye Steak, Mash, Signature Mojave & Fudgy Brownie.</p>
-                    <span class="offer-code">ONLY Tk 1,150</span>
-                </div>
-            </div>
-            <div class="offer-card glass-card">
-                <i class="fas fa-motorcycle offer-icon"></i>
-                <div class="offer-content">
-                    <h3>FREE DELIVERY</h3>
-                    <p>On orders above Tk 1,500 within Dhaka city limits.</p>
-                    <span class="offer-code">CODE: FREEDELVEE</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <section id="menu" class="menu-section">
-        <div class="section-title">
-            <h2>Our Signature Menu</h2>
-            <p>Explore culinary art crafted with heritage and passion.</p>
+    <!-- Our Story Section -->
+    <section id="about" class="about-story-section">
+        <div class="section-title-block">
+            <h2>Our Story & Craft</h2>
+            <p>Where premium culinary vision meets authentic warmth and global flair.</p>
         </div>
         
-        <div class="menu-tabs">
-            <button class="tab-btn active" data-target="all">All Items</button>
-            <button class="tab-btn" data-target="continental">Continental</button>
-            <button class="tab-btn" data-target="local">Local & Indian</button>
-            <button class="tab-btn" data-target="drinks">Dessert & Drinks</button>
+        <div class="media-story-grid">
+            <div class="media-box"><img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=400" alt="Interior View"></div>
+            <div class="media-box"><img src="https://images.unsplash.com/photo-1555396273-367ea4eb4db5?auto=format&fit=crop&q=80&w=400" alt="Kitchen Setup"></div>
+            <div class="media-box"><img src="https://images.unsplash.com/photo-1559339352-11d035aa65de?auto=format&fit=crop&q=80&w=400" alt="Dining Table"></div>
+            <div class="media-box"><img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=400" alt="Plated Dish"></div>
+            <div class="media-box"><img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" alt="Steak Cooking"></div>
+            <div class="media-box"><img src="https://images.unsplash.com/photo-1514933651103-005eec06c04b?auto=format&fit=crop&q=80&w=400" alt="Bar Counter"></div>
         </div>
 
-        <div class="menu-grid">
+        <!-- Team & Leadership Roster -->
+        <div class="chefs-flex-row">
             
-            <div class="menu-card" data-category="continental">
-                <img src="https://images.unsplash.com/photo-1600891964092-4316c288032e?auto=format&fit=crop&w=600&q=80" alt="Ribeye Steak">
-                <div class="card-info">
-                    <h3>Premium Ribeye Steak</h3>
-                    <p>Tender grilled ribeye steak with garlic butter sauce and mashed potatoes.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-ribeye" value="half" data-price="450" checked>
-                            <span class="portion-box">Half (Tk 450)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-ribeye" value="full" data-price="850">
-                            <span class="portion-box">Full (Tk 850)</span>
-                        </label>
+            <!-- Owner Info Card with Modern Image Setter Option -->
+            <div class="chef-profile-card owner-highlight">
+                <div class="profile-image-wrapper">
+                    <!-- Default Placeholder Image -->
+                    <img id="owner-profile-img" src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&q=80&w=300" alt="Md. Emtiaz Hossain Sami">
+                    
+                    <!-- Modern Hover Input Overlay -->
+                    <label for="owner-upload-input" class="image-upload-overlay" title="Upload Your Custom Photo">
+                        <i class="fa-solid fa-camera"></i>
+                        <span>Change</span>
+                    </label>
+                    <input type="file" id="owner-upload-input" accept="image/*" onchange="previewOwnerImage(this)">
+                </div>
+                <h3>Md. Emtiaz Hossain Sami</h3>
+                <p class="chef-role-tag">Owner & Founder</p>
+                <p class="chef-biography">Visionary entrepreneur dedicated to bringing premium global dining experiences, rich heritage blends, and authentic traditional cuisines under one elite platform.</p>
+            </div>
+
+            <div class="chef-profile-card">
+                <div class="profile-image-wrapper normal-chef-border">
+                    <img src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&q=80&w=300" alt="Chef Vera">
+                </div>
+                <h3>Chef Vera Okonkwo</h3>
+                <p class="chef-role-tag">Executive Chef</p>
+                <p class="chef-biography">With over 12 years of experience in global fine dining. Chef Vee crafts menus that tell unique stories of West African heritage with international sophistication.</p>
+            </div>
+
+            <div class="chef-profile-card">
+                <div class="profile-image-wrapper normal-chef-border">
+                    <img src="https://images.unsplash.com/photo-1583394838336-acd977736f90?auto=format&fit=crop&q=80&w=300" alt="Chef Michael">
+                </div>
+                <h3>Michael Adebayo</h3>
+                <p class="chef-role-tag">Sous Chef / Grill Master</p>
+                <p class="chef-biography">Michael's mastery of open-fire cooking and traditional techniques brings out the bold, smoky premium flavors that our restaurant is famous for.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Space Showcase -->
+    <section id="gallery" class="ambience-gallery-section">
+        <h2>Our Space & Atmosphere</h2>
+        <p>Intimate lighting, earthy textures, and a vibrant energy—the Vee's experience starts the moment you walk in.</p>
+        <div class="ambience-row">
+            <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&q=80&w=500" alt="Atmosphere 1">
+            <img src="https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?auto=format&fit=crop&q=80&w=500" alt="Atmosphere 2">
+            <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=500" alt="Atmosphere 3">
+        </div>
+    </section>
+
+    <!-- Interactive Menu Filter Display -->
+    <section id="menu" class="menu-display-section">
+        <p class="sub-heading-accent">Our Culinary Art</p>
+        <h2>Discover Our Menu</h2>
+        <p class="menu-subtext">From timeless classics to modern twists—each plate tells a story of passion.</p>
+        
+        <div class="menu-filter-bar">
+            <button class="filter-tab-btn active" onclick="filterMenu('all')">All</button>
+            <button class="filter-tab-btn" onclick="filterMenu('bangladeshi')">Bangladeshi Cuisine</button>
+            <button class="filter-tab-btn" onclick="filterMenu('grill')">Grill & Suya</button>
+            <button class="filter-tab-btn" onclick="filterMenu('desserts')">Desserts & Sweets</button>
+        </div>
+
+        <div class="menu-products-container">
+            
+            <!-- ================= BANGLADESHI CUISINE ITEMS ================= -->
+            <!-- Item 1: Biriyani -->
+            <div class="product-item-card bangladeshi">
+                <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&q=80&w=400" alt="Beef Biriyani">
+                <div class="product-card-body">
+                    <h3>Traditional Beef Biriyani</h3>
+                    <p>Aromatic basmati rice cooked with tender beef and rich spices.</p>
+                    <div class="product-dropdown-control">
+                        <label>Portion:</label>
+                        <select onchange="updatePlatePricing(this, 1800, 3200)">
+                            <option value="full">Full Plate</option>
+                            <option value="half">Half Plate</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 450</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦3,200</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="continental">
-                <img src="https://images.unsplash.com/photo-1513104890138-7c749659a591?auto=format&fit=crop&w=600&q=80" alt="Four Cheese Pizza">
-                <div class="card-info">
-                    <h3>Four Cheese Pizza</h3>
-                    <p>12-inch artisanal crust loaded with Mozzarella, Parmesan, Cheddar, and Blue cheese.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-cheese_pizza" value="half" data-price="350">
-                            <span class="portion-box">Half (Tk 350)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-cheese_pizza" value="full" data-price="600" checked>
-                            <span class="portion-box">Full (Tk 600)</span>
-                        </label>
+            <!-- Item 2: Nun -->
+            <div class="product-item-card bangladeshi">
+                <img src="https://images.unsplash.com/photo-1601050690597-df056fb49785?auto=format&fit=crop&q=80&w=400" alt="Butter Nun">
+                <div class="product-card-body">
+                    <h3>Soft Butter Nun</h3>
+                    <p>Freshly baked tandoor flatbread brushed with premium butter.</p>
+                    <div class="product-dropdown-control">
+                        <label>Portion:</label>
+                        <select onchange="updatePlatePricing(this, 400, 750)">
+                            <option value="full">Full Plate (2 Pcs)</option>
+                            <option value="half">Half Plate (1 Pc)</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 600</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦750</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="continental">
-                <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=600&q=80" alt="Fettuccine Alfredo">
-                <div class="card-info">
-                    <h3>Fettuccine Alfredo</h3>
-                    <p>Rich, creamy white sauce pasta topped with seasoned grilled chicken breast.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-fettuccine" value="half" data-price="280">
-                            <span class="portion-box">Half (Tk 280)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-fettuccine" value="full" data-price="450" checked>
-                            <span class="portion-box">Full (Tk 450)</span>
-                        </label>
+            <!-- Item 3: Mutton Kacchi -->
+            <div class="product-item-card bangladeshi">
+                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&q=80&w=400" alt="Mutton Kacchi">
+                <div class="product-card-body">
+                    <h3>Premium Mutton Kacchi</h3>
+                    <p>Layered saffron rice cooked with juicy mutton pieces and potato.</p>
+                    <div class="product-dropdown-control">
+                        <label>Portion:</label>
+                        <select onchange="updatePlatePricing(this, 2200, 3900)">
+                            <option value="full">Full Plate</option>
+                            <option value="half">Half Plate</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 450</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦3,900</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="continental">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=600&q=80" alt="BBQ Beef Burger">
-                <div class="card-info">
-                    <h3>Smoked BBQ Beef Burger</h3>
-                    <p>Double beef patty, melted cheddar, crispy onion rings, and secret BBQ glaze.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-bbq_burger" value="half" data-price="250">
-                            <span class="portion-box">Single (Tk 250)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-bbq_burger" value="full" data-price="380" checked>
-                            <span class="portion-box">Double (Tk 380)</span>
-                        </label>
+            <!-- Item 4: Beef Bhuna -->
+            <div class="product-item-card bangladeshi">
+                <img src="https://images.unsplash.com/photo-1606491956689-2ea866880c84?auto=format&fit=crop&q=80&w=400" alt="Beef Bhuna">
+                <div class="product-card-body">
+                    <h3>Spicy Beef Bhuna</h3>
+                    <p>Deeply roasted beef curry gravy cooked with traditional spices.</p>
+                    <div class="product-dropdown-control">
+                        <label>Portion:</label>
+                        <select onchange="updatePlatePricing(this, 1500, 2800)">
+                            <option value="full">Full Plate</option>
+                            <option value="half">Half Plate</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 380</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦2,800</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="continental">
-                <img src="https://images.unsplash.com/photo-1467003909585-2f8a72700288?auto=format&fit=crop&w=600&q=80" alt="Atlantic Salmon">
-                <div class="card-info">
-                    <h3>Atlantic Grilled Salmon</h3>
-                    <p>Perfectly pan-seared salmon fillet served with asparagus and lemon-dill cream.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-salmon" value="half" data-price="700">
-                            <span class="portion-box">Half (Tk 700)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-salmon" value="full" data-price="1200" checked>
-                            <span class="portion-box">Full (Tk 1200)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 1200</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="continental">
-                <img src="https://images.unsplash.com/photo-1599084993091-1cb5c0721cc6?auto=format&fit=crop&w=600&q=80" alt="Fish and Chips">
-                <div class="card-info">
-                    <h3>Classic Fish & Chips</h3>
-                    <p>Deep-fried crispy beer-battered dory fish served with tartar sauce and fries.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-fish_chips" value="half" data-price="280">
-                            <span class="portion-box">Half (Tk 280)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-fish_chips" value="full" data-price="450" checked>
-                            <span class="portion-box">Full (Tk 450)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 450</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="local">
-                <img src="https://images.unsplash.com/photo-1633945274405-b6c8069047b0?auto=format&fit=crop&w=600&q=80" alt="Mutton Kacchi">
-                <div class="card-info">
-                    <h3>Mutton Kacchi Biryani</h3>
-                    <p>Basmati rice cooked in slow steam with tender mutton pieces, potatoes, and saffron.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-kacchi" value="half" data-price="220">
-                            <span class="portion-box">Half (Tk 220)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-kacchi" value="full" data-price="350" checked>
-                            <span class="portion-box">Full (Tk 350)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 350</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="local">
-                <img src="https://images.unsplash.com/photo-1588166524941-3bf61a9c41db?auto=format&fit=crop&w=600&q=80" alt="Butter Chicken">
-                <div class="card-info">
-                    <h3>Mughlai Butter Chicken</h3>
-                    <p>Boneless tandoori chicken simmered in a rich, velvety tomato and butter gravy.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-butter_chicken" value="half" data-price="250">
-                            <span class="portion-box">Half (Tk 250)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-butter_chicken" value="full" data-price="400" checked>
-                            <span class="portion-box">Full (Tk 400)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 400</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="local">
-                <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=600&q=80" alt="Garlic Naan">
-                <div class="card-info">
-                    <h3>Premium Garlic Naan</h3>
-                    <p>Soft tandoor-baked flatbread brushed with fresh garlic paste and pure ghee.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-garlic_naan" value="piece" data-price="50" checked>
-                            <span class="portion-box">Piece (Tk 50)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 50</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="local">
-                <img src="https://images.unsplash.com/photo-1599487488170-d11ec9c172f0?auto=format&fit=crop&w=600&q=80" alt="Chicken Tikka">
-                <div class="card-info">
-                    <h3>Flame-Grilled Chicken Tikka</h3>
-                    <p>Spicy, yogurt-marinated chicken chunks skewered and char-grilled to perfection.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-chicken_tikka" value="half" data-price="180">
-                            <span class="portion-box">Half (Tk 180)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-chicken_tikka" value="full" data-price="300" checked>
-                            <span class="portion-box">Full (Tk 300)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 300</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="local">
-                <img src="https://images.unsplash.com/photo-1512058564366-18510be2db19?auto=format&fit=crop&w=600&q=80" alt="Beef Bhuna">
-                <div class="card-info">
-                    <h3>Traditional Beef Bhuna</h3>
-                    <p>Slow-cooked beef infused with authentic spices, onions, and rich semi-dry gravy.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-beef_bhuna" value="half" data-price="200">
-                            <span class="portion-box">Half (Tk 200)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-beef_bhuna" value="full" data-price="350" checked>
-                            <span class="portion-box">Full (Tk 350)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 350</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=600&q=80" alt="Mint Mojito">
-                <div class="card-info">
+            <!-- Item 5: Signature Mint Mojito -->
+            <div class="product-item-card bangladeshi">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&q=80&w=400" alt="Mint Mojito">
+                <div class="product-card-body">
                     <h3>Signature Mint Mojito</h3>
-                    <p>Refreshing combination of muddled mint, lime, sugar syrup, and fizzy soda water.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-mojito" value="glass" data-price="120" checked>
-                            <span class="portion-box">Glass (Tk 120)</span>
-                        </label>
+                    <p>Refreshing blend of fresh mint leaves, lime juice, and sparkling soda.</p>
+                    <div class="product-dropdown-control">
+                        <label>Serving Size:</label>
+                        <span style="font-size: 13px; color: #555; font-weight:600;">Normal Glass</span>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 120</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price">₦1,200</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bfc?auto=format&fit=crop&w=600&q=80" alt="Strawberry Shake">
-                <div class="card-info">
-                    <h3>Gourmet Strawberry Shake</h3>
-                    <p>Thick blended milkshake made with premium vanilla ice cream and fresh strawberries.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-strawberry_shake" value="glass" data-price="150" checked>
-                            <span class="portion-box">Glass (Tk 150)</span>
-                        </label>
+            <!-- ================= ORIGINAL ITEMS & SWEETS ================= -->
+            <div class="product-item-card grill">
+                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&q=80&w=400" alt="Suya Platter">
+                <div class="product-card-body">
+                    <h3>Suya Platter</h3>
+                    <p>Spiced beef skewers, onions, extra yaji spice blend.</p>
+                    <div class="product-dropdown-control">
+                        <label>Portion:</label>
+                        <select onchange="updatePlatePricing(this, 2500, 4500)">
+                            <option value="full">Full Plate</option>
+                            <option value="half">Half Plate</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 150</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦4,500</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1607958996333-41aef7caefaa?auto=format&fit=crop&w=600&q=80" alt="Fudge Brownie">
-                <div class="card-info">
-                    <h3>Sizzling Fudge Brownie</h3>
-                    <p>Warm chocolate brownie served with a scoop of vanilla bean ice cream and hot fudge.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-brownie" value="plate" data-price="180" checked>
-                            <span class="portion-box">Plate (Tk 180)</span>
-                        </label>
+            <!-- Sweets: Golap Jam -->
+            <div class="product-item-card desserts">
+                <img src="https://images.unsplash.com/photo-1626132647523-66f5bf380027?auto=format&fit=crop&q=80&w=400" alt="Golap Jam">
+                <div class="product-card-body">
+                    <h3>Golap Jam</h3>
+                    <p>Soft, juicy, deep-fried milk balls dipped in sugar syrup.</p>
+                    <div class="product-dropdown-control">
+                        <label>Weight:</label>
+                        <select onchange="updateSweetPricing(this, 1500, 2800, 5000)">
+                            <option value="250">250 gm</option>
+                            <option value="500">500 gm</option>
+                            <option value="1000">1 kg</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 180</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦1,500</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?auto=format&fit=crop&w=600&q=80" alt="Mini Donuts">
-                <div class="card-info">
-                    <h3>Glazed Mini Donuts</h3>
-                    <p>Box of 4 soft donuts coated in classic sugar glaze and chocolate sprinkles.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-mini_donuts" value="box" data-price="140" checked>
-                            <span class="portion-box">Box (Tk 140)</span>
-                        </label>
+            <!-- Sweets: Kalo Jam -->
+            <div class="product-item-card desserts">
+                <img src="https://images.unsplash.com/photo-1605647540924-852290f6b0d5?auto=format&fit=crop&q=80&w=400" alt="Kalo Jam">
+                <div class="product-card-body">
+                    <h3>Kalo Jam</h3>
+                    <p>Delicious dark fried paneer treats infused with cardamom.</p>
+                    <div class="product-dropdown-control">
+                        <label>Weight:</label>
+                        <select onchange="updateSweetPricing(this, 1600, 3000, 5500)">
+                            <option value="250">250 gm</option>
+                            <option value="500">500 gm</option>
+                            <option value="1000">1 kg</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 140</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦1,600</span>
                 </div>
             </div>
 
-            <!-- ================= NEW SWEETS ================= -->
-            
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1598514982205-f36b96d1e8d4?auto=format&fit=crop&w=600&q=80" alt="Kalo Jam">
-                <div class="card-info">
-                    <h3>Premium Kalo Jam</h3>
-                    <p>Traditional deep-fried milk solids soaked in light, sweet sugar syrup.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-kalo_jam" value="250g" data-price="150">
-                            <span class="portion-box">250gm (Tk 150)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-kalo_jam" value="500g" data-price="300" checked>
-                            <span class="portion-box">Half Kg (Tk 300)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-kalo_jam" value="1kg" data-price="600">
-                            <span class="portion-box">1 Kg (Tk 600)</span>
-                        </label>
+            <!-- Sweets: Sondesh -->
+            <div class="product-item-card desserts">
+                <img src="https://images.unsplash.com/photo-1587314168485-3236d6710814?auto=format&fit=crop&q=80&w=400" alt="Sondesh">
+                <div class="product-card-body">
+                    <h3>Sondesh</h3>
+                    <p>Exquisite milk-based sweet made from fresh chhena and saffron.</p>
+                    <div class="product-dropdown-control">
+                        <label>Weight:</label>
+                        <select onchange="updateSweetPricing(this, 1800, 3200, 6000)">
+                            <option value="250">250 gm</option>
+                            <option value="500">500 gm</option>
+                            <option value="1000">1 kg</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 300</span>
-                        </div>
-                    </div>
+                    <span class="product-base-price dynamic-render-price">₦1,800</span>
                 </div>
             </div>
 
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1559523169-2150fb319df9?auto=format&fit=crop&w=600&q=80" alt="Golap Jam">
-                <div class="card-info">
-                    <h3>Classic Golap Jam</h3>
-                    <p>Soft, melt-in-the-mouth milk dumplings flavored with cardamom and rose water.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-golap_jam" value="250g" data-price="150">
-                            <span class="portion-box">250gm (Tk 150)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-golap_jam" value="500g" data-price="300" checked>
-                            <span class="portion-box">Half Kg (Tk 300)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-golap_jam" value="1kg" data-price="600">
-                            <span class="portion-box">1 Kg (Tk 600)</span>
-                        </label>
+            <!-- Sweets: Roshogolla -->
+            <div class="product-item-card desserts">
+                <img src="https://images.unsplash.com/photo-1505253716362-afaea1d3d1af?auto=format&fit=crop&q=80&w=400" alt="Roshogolla">
+                <div class="product-card-body">
+                    <h3>Roshogolla</h3>
+                    <p>Light, sweet, circular cottage cheese dumplings boiled in syrup.</p>
+                    <div class="product-dropdown-control">
+                        <label>Weight:</label>
+                        <select onchange="updateSweetPricing(this, 1400, 2600, 4800)">
+                            <option value="250">250 gm</option>
+                            <option value="500">500 gm</option>
+                            <option value="1000">1 kg</option>
+                        </select>
                     </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 300</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1644342371191-235dae540562?auto=format&fit=crop&w=600&q=80" alt="Rosogolla">
-                <div class="card-info">
-                    <h3>Sponge Rosogolla</h3>
-                    <p>Authentic pure chhana dumplings steeped in light and sweet sugar syrup.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-rosogolla" value="250g" data-price="100">
-                            <span class="portion-box">250gm (Tk 100)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-rosogolla" value="500g" data-price="200" checked>
-                            <span class="portion-box">Half Kg (Tk 200)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-rosogolla" value="1kg" data-price="400">
-                            <span class="portion-box">1 Kg (Tk 400)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 200</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="menu-card" data-category="drinks">
-                <img src="https://images.unsplash.com/photo-1563805042-7684c8a9e9ce?auto=format&fit=crop&w=600&q=80" alt="Porabarir Chomchom">
-                <div class="card-info">
-                    <h3>Porabarir Chomchom</h3>
-                    <p>Rich and dense traditional sweet coated with mawa, famous for its texture.</p>
-                    <div class="portion-group">
-                        <label class="portion-label">
-                            <input type="radio" name="portion-chomchom" value="250g" data-price="120">
-                            <span class="portion-box">250gm (Tk 120)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-chomchom" value="500g" data-price="240" checked>
-                            <span class="portion-box">Half Kg (Tk 240)</span>
-                        </label>
-                        <label class="portion-label">
-                            <input type="radio" name="portion-chomchom" value="1kg" data-price="480">
-                            <span class="portion-box">1 Kg (Tk 480)</span>
-                        </label>
-                    </div>
-                    <div class="card-footer">
-                        <div class="quantity-control">
-                            <button type="button" class="qty-btn qty-minus"><i class="fas fa-minus"></i></button>
-                            <input type="number" class="qty-input" value="1" min="1">
-                            <button type="button" class="qty-btn qty-plus"><i class="fas fa-plus"></i></button>
-                        </div>
-                        <div class="price-display">
-                            Total: <span class="total-price">Tk 240</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-        </div>
-    </section>
-
-    <section id="reservation" class="reservation-section">
-        <div class="glass-form-container">
-            <h2>Reserve Your Table</h2>
-            <p>Book your perfect spot for an exceptional dining experience.</p>
-            
-            <form id="resForm">
-                <div class="form-group row">
-                    <input type="text" id="name" placeholder="Your Name" required>
-                    <input type="email" id="email" placeholder="Your Email" required>
-                </div>
-                <div class="form-group row">
-                    <input type="date" id="date" required>
-                    <input type="time" id="time" required>
-                </div>
-                <div class="form-group">
-                    <select id="guests" required>
-                        <option value="" disabled selected>Number of Guests</option>
-                        <option value="1">1 Person</option>
-                        <option value="2">2 People</option>
-                        <option value="4">4 People</option>
-                        <option value="6">6+ People</option>
-                    </select>
-                </div>
-                <div class="seating-preference">
-                    <p>Seating Preference:</p>
-                    <div class="seat-options">
-                        <label class="seat-box">
-                            <input type="radio" name="seating" value="Indoor" checked>
-                            <span class="custom-box"><i class="fas fa-chair"></i> Indoor Dining</span>
-                        </label>
-                        <label class="seat-box">
-                            <input type="radio" name="seating" value="Terrace">
-                            <span class="custom-box"><i class="fas fa-cloud-sun"></i> Outdoor Terrace</span>
-                        </label>
-                        <label class="seat-box">
-                            <input type="radio" name="seating" value="VIP">
-                            <span class="custom-box"><i class="fas fa-crown"></i> Private VIP Booth</span>
-                        </label>
-                    </div>
-                </div>
-                <button type="submit" class="btn-submit">Confirm Booking</button>
-            </form>
-            <div id="formFeedback" class="form-feedback hidden"></div>
-        </div>
-    </section>
-
-    <section id="contact" class="contact-section">
-        <div class="contact-container">
-            <h2>Contact & Support</h2>
-            <p>Have questions or special event requests? Reach out to us directly.</p>
-            <div class="contact-cards">
-                <div class="contact-card">
-                    <i class="fas fa-phone-alt"></i>
-                    <h3>Call / WhatsApp</h3>
-                    <p><a href="tel:+8801998453990" class="contact-link">+880 1998-453990</a></p>
-                </div>
-                <div class="contact-card">
-                    <i class="fas fa-envelope"></i>
-                    <h3>Email Us</h3>
-                    <p>info@veesrestaurant.com</p>
+                    <span class="product-base-price dynamic-render-price">₦1,400</span>
                 </div>
             </div>
         </div>
+        <button class="btn-primary space-block-center" onclick="openBooking()">View Full Menu & Book</button>
     </section>
 
-    <footer>
-        <p>&copy; 2026 Vee's Restaurant. All Rights Reserved.</p>
-        <p class="credits">Proprietor: <strong>Md. Emtiaz Hossain Sami</strong></p>
-    </footer>
+    <!-- ================= CONTACT & SUPPORT SECTION ================= -->
+    <section id="contact" class="image-clone-contact-section">
+        <h2>Contact & Support</h2>
+        <p class="contact-subhead-text">Have questions or special event requests? Reach out to us directly.</p>
+        
+        <div class="contact-dual-cards-wrapper">
+            <div class="support-item-box">
+                <div class="icon-frame"><i class="fa-solid fa-phone"></i></div>
+                <h3>Call / WhatsApp</h3>
+                <p class="display-clickable-info">+880 1998-453990</p>
+            </div>
+            <div class="support-item-box">
+                <div class="icon-frame"><i class="fa-solid fa-envelope"></i></div>
+                <h3>Email Us</h3>
+                <p class="display-clickable-info">info@veesrestaurant.com</p>
+            </div>
+        </div>
+
+        <!-- System Legal Copyright & Proprietor Block -->
+        <div class="legal-system-footer">
+            <p>© 2026 Vee's Restaurant. All Rights Reserved.</p>
+            <p class="brand-proprietor-signature">Proprietor: <strong>Md. Emtiaz Hossain Sami</strong></p>
+        </div>
+    </section>
+
+    <!-- ================= BOOKING MODAL ARCHITECTURE ================= -->
+    <div id="bookingModal" class="system-modal-backdrop">
+        <div class="modal-card-container">
+            <span class="modal-dismiss-trigger" onclick="closeBooking()">&times;</span>
+            <div class="modal-wizard-header">
+                <div class="wizard-node Node-1 active">1</div>
+                <div class="wizard-node Node-2">2</div>
+                <div class="wizard-node Node-3">3</div>
+            </div>
+
+            <!-- Panel 1 -->
+            <div id="step1" class="wizard-panel active">
+                <h3>When & How Many?</h3>
+                <p class="wizard-panel-info">Select your preferred date, time, and number of guests</p>
+                <div class="modal-form-group">
+                    <label>Select Date *</label>
+                    <input type="date" id="book-date" value="2026-06-15">
+                </div>
+                <div class="modal-form-group">
+                    <label>Select Time *</label>
+                    <input type="time" id="book-time" value="18:30">
+                </div>
+                <div class="modal-form-group">
+                    <label>Number of Guests *</label>
+                    <input type="number" id="book-guests" min="1" max="20" value="2">
+                </div>
+                <button class="btn-wizard-forward" onclick="nextStep(2)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+            </div>
+
+            <!-- Panel 2 -->
+            <div id="step2" class="wizard-panel">
+                <h3>Seating Preference</h3>
+                <p class="wizard-panel-info">Choose your preferred table type</p>
+                <div class="seating-radio-matrix">
+                    <label class="custom-radio-card">
+                        <input type="radio" name="seating" value="Indoor" checked>
+                        <div class="radio-card-body">
+                            <i class="fa-solid fa-chair"></i>
+                            <span>Indoor Dining</span>
+                        </div>
+                    </label>
+                    <label class="custom-radio-card">
+                        <input type="radio" name="seating" value="Outdoor">
+                        <div class="radio-card-body">
+                            <i class="fa-solid fa-sun"></i>
+                            <span>Outdoor Terrace</span>
+                        </div>
+                    </label>
+                </div>
+                <div class="modal-form-group">
+                    <label>Special Requests (optional)</label>
+                    <textarea id="special-requests" placeholder="Allergies, celebrations, etc."></textarea>
+                </div>
+                <div class="wizard-action-row">
+                    <button class="btn-wizard-backward" onclick="prevStep(1)"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    <button class="btn-wizard-forward" onclick="nextStep(3)">Continue <i class="fa-solid fa-arrow-right"></i></button>
+                </div>
+            </div>
+
+            <!-- Panel 3 -->
+            <div id="step3" class="wizard-panel">
+                <h3>Your Information</h3>
+                <p class="wizard-panel-info">We'll send confirmation details here</p>
+                <div class="modal-form-group">
+                    <label>Full Name *</label>
+                    <input type="text" id="fullname" placeholder="John Doe">
+                </div>
+                <div class="modal-form-group">
+                    <label>Phone Number *</label>
+                    <input type="tel" id="phone" placeholder="01456434343">
+                </div>
+                <div class="modal-form-group">
+                    <label>Email Address *</label>
+                    <input type="email" id="email" placeholder="hello@exqample.com">
+                </div>
+                <div class="wizard-action-row">
+                    <button class="btn-wizard-backward" onclick="prevStep(2)"><i class="fa-solid fa-arrow-left"></i> Back</button>
+                    <button class="btn-wizard-complete" onclick="confirmReservation()">Confirm Reservation <i class="fa-solid fa-check"></i></button>
+                </div>
+            </div>
+
+            <!-- Success -->
+            <div id="step-success" class="wizard-panel core-text-center">
+                <div class="success-status-icon"><i class="fa-solid fa-circle-check"></i></div>
+                <h3>Reservation Request Sent!</h3>
+                <p>Thank you for choosing Vee's Restaurant. We'll contact you inside 30 minutes.</p>
+                <button class="btn-primary" onclick="closeBooking()" style="margin-top:25px; width:100%;">Return to Home</button>
+            </div>
+        </div>
+    </div>
 
     <script src="script.js"></script>
 </body>
